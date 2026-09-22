@@ -37,12 +37,12 @@ Node, Playwright, or a terminal on their own machine.
 ## How your colleague uses it
 
 - **Every Monday, Wednesday, and Friday morning**, a Google Chat message shows up with a ✅ or ⚠️ summary
-  and a link. She opens the link, sees a grid of screenshots per site
-  (homepage + latest article, desktop + mobile), each tagged with which
-  banner placements were found and rendered.
-- **To run it early** (e.g. right after a banner change), she goes to the
-  repo's **Actions** tab → **Banner Check** → **Run workflow** button. No
-  code, no terminal.
+  and a link. Your colleague opens the link and sees a grid of screenshots
+  per site (homepage + latest article, desktop + mobile), each tagged with
+  which banner placements were found and rendered.
+- **To run it early** (e.g. right after a banner change), your colleague
+  goes to the repo's **Actions** tab → **Banner Check** → **Run workflow**
+  button. No code, no terminal.
 - **Old screenshots** older than 14 days are deleted automatically on every
   run — nothing to clean up manually.
 
