@@ -60,5 +60,7 @@ jobs:
       - name: Notify Google Chat
         env:
           GCHAT_WEBHOOK_URL: ${{ secrets.GCHAT_WEBHOOK_URL }}
+          # Replace with your actual GitHub Pages base URL, e.g.
+          # https://<org>.github.io/<repo>/banner-checks
           PAGES_BASE_URL: ${{ secrets.PAGES_BASE_URL }}
         run: npm run notify
