@@ -14,10 +14,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -32,10 +28,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -56,10 +48,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -80,10 +68,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -98,10 +82,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -118,10 +98,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -136,10 +112,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -160,10 +132,6 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -176,10 +144,6 @@
               "rendered": false
             },
             "in-content-banner": {
-              "found": false,
-              "rendered": false
-            },
-            "sidebar-widgets": {
               "found": false,
               "rendered": false
             }
@@ -198,10 +162,6 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -214,10 +174,6 @@
               "rendered": false
             },
             "in-content-banner": {
-              "found": false,
-              "rendered": false
-            },
-            "sidebar-widgets": {
               "found": false,
               "rendered": false
             }
@@ -240,10 +196,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -258,10 +210,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -282,10 +230,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -306,10 +250,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -324,10 +264,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -335,8 +271,18 @@
       },
       "article": {
         "desktop": {
-          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.id/110754/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
-          "ok": false
+          "file": "Indonesia-article-desktop.png",
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            }
+          },
+          "ok": true
         },
         "mobile": {
           "file": "Indonesia-article-mobile.png",
@@ -348,10 +294,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -372,10 +314,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -390,10 +328,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -414,10 +348,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -438,10 +368,6 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -454,10 +380,6 @@
               "rendered": false
             },
             "in-content-banner": {
-              "found": false,
-              "rendered": false
-            },
-            "sidebar-widgets": {
               "found": false,
               "rendered": false
             }
@@ -476,10 +398,6 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -492,10 +410,6 @@
               "rendered": false
             },
             "in-content-banner": {
-              "found": false,
-              "rendered": false
-            },
-            "sidebar-widgets": {
               "found": false,
               "rendered": false
             }
@@ -518,10 +432,6 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -534,10 +444,6 @@
               "rendered": false
             },
             "in-content-banner": {
-              "found": false,
-              "rendered": false
-            },
-            "sidebar-widgets": {
               "found": false,
               "rendered": false
             }
@@ -556,10 +462,6 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -572,10 +474,6 @@
               "rendered": false
             },
             "in-content-banner": {
-              "found": false,
-              "rendered": false
-            },
-            "sidebar-widgets": {
               "found": false,
               "rendered": false
             }
@@ -598,10 +496,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -616,10 +510,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -631,8 +521,18 @@
           "ok": false
         },
         "mobile": {
-          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.au/123046/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
-          "ok": false
+          "file": "Australia-article-mobile.png",
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            }
+          },
+          "ok": true
         }
       },
       "articleUrl": "https://fintechnews.au/123046/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/"
@@ -650,10 +550,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -668,10 +564,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -692,10 +584,6 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -716,10 +604,6 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -732,10 +616,6 @@
               "rendered": false
             },
             "in-content-banner": {
-              "found": false,
-              "rendered": false
-            },
-            "sidebar-widgets": {
               "found": false,
               "rendered": false
             }
@@ -754,10 +634,6 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -770,10 +646,6 @@
               "rendered": false
             },
             "in-content-banner": {
-              "found": false,
-              "rendered": false
-            },
-            "sidebar-widgets": {
               "found": false,
               "rendered": false
             }
@@ -796,10 +668,6 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -812,10 +680,6 @@
               "rendered": false
             },
             "in-content-banner": {
-              "found": false,
-              "rendered": false
-            },
-            "sidebar-widgets": {
               "found": false,
               "rendered": false
             }
@@ -834,10 +698,6 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
             }
           },
           "ok": true
@@ -850,10 +710,6 @@
               "rendered": false
             },
             "in-content-banner": {
-              "found": false,
-              "rendered": false
-            },
-            "sidebar-widgets": {
               "found": false,
               "rendered": false
             }
