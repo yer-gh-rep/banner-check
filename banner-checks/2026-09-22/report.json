@@ -43,22 +43,8 @@
       },
       "article": {
         "desktop": {
-          "file": "Singapore-article-desktop.png",
-          "banners": {
-            "top-banner": {
-              "found": true,
-              "rendered": true
-            },
-            "in-content-banner": {
-              "found": true,
-              "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
-            }
-          },
-          "ok": true
+          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.sg/137621/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
+          "ok": false
         },
         "mobile": {
           "file": "Singapore-article-mobile.png",
@@ -79,7 +65,7 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.sg/137573/ai/lexisnexis-ai-fraud-detection/"
+      "articleUrl": "https://fintechnews.sg/137621/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/"
     },
     "UAE": {
       "url": "https://fintechnews.ae",
@@ -159,7 +145,7 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.ae/33479/saudi/saudi-arabia-mbridge-withdrawal/"
+      "articleUrl": "https://fintechnews.ae/33546/qatar/doha-investment-qatar-qia-portfolio/"
     },
     "Africa": {
       "url": "https://fintechnews.africa",
@@ -283,22 +269,8 @@
       },
       "article": {
         "desktop": {
-          "file": "Malaysia-article-desktop.png",
-          "banners": {
-            "top-banner": {
-              "found": true,
-              "rendered": true
-            },
-            "in-content-banner": {
-              "found": true,
-              "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
-            }
-          },
-          "ok": true
+          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.my/60995/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
+          "ok": false
         },
         "mobile": {
           "file": "Malaysia-article-mobile.png",
@@ -319,7 +291,7 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.my/60971/e-wallets-malaysia/tng-ewallet-gofinance-8-5-million-users/"
+      "articleUrl": "https://fintechnews.my/60995/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/"
     },
     "Indonesia": {
       "url": "https://fintechnews.id",
@@ -363,22 +335,8 @@
       },
       "article": {
         "desktop": {
-          "file": "Indonesia-article-desktop.png",
-          "banners": {
-            "top-banner": {
-              "found": true,
-              "rendered": true
-            },
-            "in-content-banner": {
-              "found": true,
-              "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
-            }
-          },
-          "ok": true
+          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.id/110754/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
+          "ok": false
         },
         "mobile": {
           "file": "Indonesia-article-mobile.png",
@@ -399,7 +357,7 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.id/110744/payments/indonesia-qris-expansion-four-countries/"
+      "articleUrl": "https://fintechnews.id/110754/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/"
     },
     "Philippines": {
       "url": "https://fintechnews.ph",
@@ -443,22 +401,8 @@
       },
       "article": {
         "desktop": {
-          "file": "Philippines-article-desktop.png",
-          "banners": {
-            "top-banner": {
-              "found": true,
-              "rendered": true
-            },
-            "in-content-banner": {
-              "found": true,
-              "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
-            }
-          },
-          "ok": true
+          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.ph/73661/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
+          "ok": false
         },
         "mobile": {
           "file": "Philippines-article-mobile.png",
@@ -479,7 +423,7 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.ph/73651/payments/security-bank-apple-pay-launch-2027/"
+      "articleUrl": "https://fintechnews.ph/73661/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/"
     },
     "Baltic": {
       "url": "https://fintechbaltic.com",
@@ -683,43 +627,15 @@
       },
       "article": {
         "desktop": {
-          "file": "Australia-article-desktop.png",
-          "banners": {
-            "top-banner": {
-              "found": true,
-              "rendered": true
-            },
-            "in-content-banner": {
-              "found": true,
-              "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
-            }
-          },
-          "ok": true
+          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.au/123046/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
+          "ok": false
         },
         "mobile": {
-          "file": "Australia-article-mobile.png",
-          "banners": {
-            "top-banner": {
-              "found": true,
-              "rendered": false
-            },
-            "in-content-banner": {
-              "found": true,
-              "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
-            }
-          },
-          "ok": true
+          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.au/123046/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
+          "ok": false
         }
       },
-      "articleUrl": "https://fintechnews.au/123005/payments/sokin-leadership-expansion-australia/"
+      "articleUrl": "https://fintechnews.au/123046/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/"
     },
     "Hong Kong": {
       "url": "https://fintechnews.hk",
@@ -763,22 +679,8 @@
       },
       "article": {
         "desktop": {
-          "file": "Hong Kong-article-desktop.png",
-          "banners": {
-            "top-banner": {
-              "found": true,
-              "rendered": true
-            },
-            "in-content-banner": {
-              "found": true,
-              "rendered": true
-            },
-            "sidebar-widgets": {
-              "found": false,
-              "rendered": false
-            }
-          },
-          "ok": true
+          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.hk/40846/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
+          "ok": false
         },
         "mobile": {
           "file": "Hong Kong-article-mobile.png",
@@ -799,7 +701,7 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.hk/40797/blockchain/ant-digital-technologies-amundi-tokenised-funds/"
+      "articleUrl": "https://fintechnews.hk/40846/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/"
     },
     "Switzerland": {
       "url": "https://fintechnews.ch",
@@ -879,7 +781,7 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.ch/payments/aci-connetic-financial-messaging/85830/"
+      "articleUrl": "https://fintechnews.ch/roboadvisor_onlinewealth/findependent-pillar-3a-launch/85866/"
     },
     "Americas": {
       "url": "https://fintechnews.am",
