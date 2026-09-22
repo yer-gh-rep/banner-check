@@ -6,7 +6,6 @@
       "home": {
         "desktop": {
           "file": "Singapore-home-desktop.png",
-          "sidebarFile": "Singapore-home-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -25,7 +24,6 @@
         },
         "mobile": {
           "file": "Singapore-home-mobile.png",
-          "sidebarFile": "Singapore-home-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -46,7 +44,6 @@
       "article": {
         "desktop": {
           "file": "Singapore-article-desktop.png",
-          "sidebarFile": "Singapore-article-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -65,7 +62,6 @@
         },
         "mobile": {
           "file": "Singapore-article-mobile.png",
-          "sidebarFile": "Singapore-article-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -83,14 +79,13 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.sg/45354/vietnam/2020-fintech-vietnam-report-and-startup-map/"
+      "articleUrl": "https://fintechnews.sg/137573/ai/lexisnexis-ai-fraud-detection/"
     },
     "UAE": {
       "url": "https://fintechnews.ae",
       "home": {
         "desktop": {
           "file": "UAE-home-desktop.png",
-          "sidebarFile": "UAE-home-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -109,7 +104,6 @@
         },
         "mobile": {
           "file": "UAE-home-mobile.png",
-          "sidebarFile": "UAE-home-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -130,7 +124,6 @@
       "article": {
         "desktop": {
           "file": "UAE-article-desktop.png",
-          "sidebarFile": "UAE-article-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -149,7 +142,6 @@
         },
         "mobile": {
           "file": "UAE-article-mobile.png",
-          "sidebarFile": "UAE-article-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -174,7 +166,6 @@
       "home": {
         "desktop": {
           "file": "Africa-home-desktop.png",
-          "sidebarFile": "Africa-home-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -193,7 +184,6 @@
         },
         "mobile": {
           "file": "Africa-home-mobile.png",
-          "sidebarFile": "Africa-home-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -214,7 +204,6 @@
       "article": {
         "desktop": {
           "file": "Africa-article-desktop.png",
-          "sidebarFile": "Africa-article-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -233,7 +222,6 @@
         },
         "mobile": {
           "file": "Africa-article-mobile.png",
-          "sidebarFile": "Africa-article-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -258,7 +246,6 @@
       "home": {
         "desktop": {
           "file": "Malaysia-home-desktop.png",
-          "sidebarFile": "Malaysia-home-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -277,7 +264,6 @@
         },
         "mobile": {
           "file": "Malaysia-home-mobile.png",
-          "sidebarFile": "Malaysia-home-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -298,7 +284,6 @@
       "article": {
         "desktop": {
           "file": "Malaysia-article-desktop.png",
-          "sidebarFile": "Malaysia-article-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -317,7 +302,6 @@
         },
         "mobile": {
           "file": "Malaysia-article-mobile.png",
-          "sidebarFile": "Malaysia-article-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -342,7 +326,6 @@
       "home": {
         "desktop": {
           "file": "Indonesia-home-desktop.png",
-          "sidebarFile": "Indonesia-home-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -361,7 +344,6 @@
         },
         "mobile": {
           "file": "Indonesia-home-mobile.png",
-          "sidebarFile": "Indonesia-home-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -382,7 +364,6 @@
       "article": {
         "desktop": {
           "file": "Indonesia-article-desktop.png",
-          "sidebarFile": "Indonesia-article-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -401,7 +382,6 @@
         },
         "mobile": {
           "file": "Indonesia-article-mobile.png",
-          "sidebarFile": "Indonesia-article-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -426,7 +406,6 @@
       "home": {
         "desktop": {
           "file": "Philippines-home-desktop.png",
-          "sidebarFile": "Philippines-home-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -445,7 +424,6 @@
         },
         "mobile": {
           "file": "Philippines-home-mobile.png",
-          "sidebarFile": "Philippines-home-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -466,7 +444,6 @@
       "article": {
         "desktop": {
           "file": "Philippines-article-desktop.png",
-          "sidebarFile": "Philippines-article-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -485,7 +462,6 @@
         },
         "mobile": {
           "file": "Philippines-article-mobile.png",
-          "sidebarFile": "Philippines-article-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -510,7 +486,6 @@
       "home": {
         "desktop": {
           "file": "Baltic-home-desktop.png",
-          "sidebarFile": "Baltic-home-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -529,7 +504,6 @@
         },
         "mobile": {
           "file": "Baltic-home-mobile.png",
-          "sidebarFile": "Baltic-home-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -550,7 +524,6 @@
       "article": {
         "desktop": {
           "file": "Baltic-article-desktop.png",
-          "sidebarFile": "Baltic-article-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -569,7 +542,6 @@
         },
         "mobile": {
           "file": "Baltic-article-mobile.png",
-          "sidebarFile": "Baltic-article-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -587,14 +559,13 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechbaltic.com/799/nordics/top-fintech-startups-nordic/"
+      "articleUrl": "https://fintechbaltic.com/11862/fintechlatvia/leading-latvian-business-school-shifts-focus-to-fintech-digital-finance/"
     },
     "Nordics": {
       "url": "https://fintechnordics.com",
       "home": {
         "desktop": {
           "file": "Nordics-home-desktop.png",
-          "sidebarFile": "Nordics-home-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -613,7 +584,6 @@
         },
         "mobile": {
           "file": "Nordics-home-mobile.png",
-          "sidebarFile": "Nordics-home-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -634,7 +604,6 @@
       "article": {
         "desktop": {
           "file": "Nordics-article-desktop.png",
-          "sidebarFile": "Nordics-article-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -653,7 +622,6 @@
         },
         "mobile": {
           "file": "Nordics-article-mobile.png",
-          "sidebarFile": "Nordics-article-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -678,7 +646,6 @@
       "home": {
         "desktop": {
           "file": "Australia-home-desktop.png",
-          "sidebarFile": "Australia-home-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -697,7 +664,6 @@
         },
         "mobile": {
           "file": "Australia-home-mobile.png",
-          "sidebarFile": "Australia-home-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -718,7 +684,6 @@
       "article": {
         "desktop": {
           "file": "Australia-article-desktop.png",
-          "sidebarFile": "Australia-article-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -737,7 +702,6 @@
         },
         "mobile": {
           "file": "Australia-article-mobile.png",
-          "sidebarFile": "Australia-article-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -762,7 +726,6 @@
       "home": {
         "desktop": {
           "file": "Hong Kong-home-desktop.png",
-          "sidebarFile": "Hong Kong-home-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -781,7 +744,6 @@
         },
         "mobile": {
           "file": "Hong Kong-home-mobile.png",
-          "sidebarFile": "Hong Kong-home-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -802,7 +764,6 @@
       "article": {
         "desktop": {
           "file": "Hong Kong-article-desktop.png",
-          "sidebarFile": "Hong Kong-article-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -821,7 +782,6 @@
         },
         "mobile": {
           "file": "Hong Kong-article-mobile.png",
-          "sidebarFile": "Hong Kong-article-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": true,
@@ -846,7 +806,6 @@
       "home": {
         "desktop": {
           "file": "Switzerland-home-desktop.png",
-          "sidebarFile": "Switzerland-home-desktop-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -865,7 +824,6 @@
         },
         "mobile": {
           "file": "Switzerland-home-mobile.png",
-          "sidebarFile": "Switzerland-home-mobile-sidebar.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -883,15 +841,9 @@
           "ok": true
         }
       },
-      "article": null,
-      "articleUrl": null
-    },
-    "Armenia": {
-      "url": "https://fintechnews.am",
-      "home": {
+      "article": {
         "desktop": {
-          "file": "Armenia-home-desktop.png",
-          "sidebarFile": "Armenia-home-desktop-sidebar.png",
+          "file": "Switzerland-article-desktop.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -909,8 +861,7 @@
           "ok": true
         },
         "mobile": {
-          "file": "Armenia-home-mobile.png",
-          "sidebarFile": "Armenia-home-mobile-sidebar.png",
+          "file": "Switzerland-article-mobile.png",
           "banners": {
             "top-banner": {
               "found": false,
@@ -928,8 +879,87 @@
           "ok": true
         }
       },
-      "article": null,
-      "articleUrl": null
+      "articleUrl": "https://fintechnews.ch/payments/aci-connetic-financial-messaging/85830/"
+    },
+    "Americas": {
+      "url": "https://fintechnews.am",
+      "home": {
+        "desktop": {
+          "file": "Americas-home-desktop.png",
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "sidebar-widgets": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Americas-home-mobile.png",
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "sidebar-widgets": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "article": {
+        "desktop": {
+          "file": "Americas-article-desktop.png",
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "sidebar-widgets": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Americas-article-mobile.png",
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "sidebar-widgets": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "articleUrl": "https://fintechnews.am/fintech-colombia/55662/revolut-colombia-banking-licence/"
     }
   }
 }
