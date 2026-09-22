@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 import fs from "node:fs";
 import path from "node:path";
-import { SITES, BANNER_CHECKS, SIDEBAR_CONTAINER_SELECTOR } from "./sites.js";
+import { SITES, BANNER_CHECKS } from "./sites.js";
 
 const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 const OUT_DIR = path.join("banner-checks", today);
@@ -12,14 +12,48 @@ const VIEWPORTS = {
   mobile: { width: 390, height: 844 },
 };
 
-/** Find the first real article link on a homepage (skips nav/menu links). */
+/**
+ * Find the genuinely most recent article on the homepage by reading each
+ * article's actual publish timestamp — not just DOM order, which can put a
+ * sponsored post or a sidebar widget ahead of the real latest article.
+ */
 async function findLatestArticleUrl(page, siteUrl) {
-  const links = await page.$$eval("a[href]", (as) =>
-    as.map((a) => a.href)
-  );
   const host = new URL(siteUrl).host;
-  // Heuristic matching this network's permalink structure: /12345/slug/
-  const articleLink = links.find((href) => {
+
+  const candidates = await page.$$eval("article", (articles) =>
+    articles
+      .map((article) => {
+        const link =
+          article.querySelector(".post-title a") ||
+          article.querySelector("a[href]");
+        const time = article.querySelector("time[datetime]");
+        return {
+          href: link ? link.href : null,
+          datetime: time ? time.getAttribute("datetime") : null,
+        };
+      })
+      .filter((c) => c.href && c.datetime)
+  );
+
+  const sameHostDated = candidates.filter((c) => {
+    try {
+      return new URL(c.href).host === host;
+    } catch {
+      return false;
+    }
+  });
+
+  if (sameHostDated.length > 0) {
+    sameHostDated.sort(
+      (a, b) => new Date(b.datetime).getTime() - new Date(a.datetime).getTime()
+    );
+    return sameHostDated[0].href;
+  }
+
+  // Fallback: no dated <article> elements found — use the old heuristic
+  // (first link matching this network's /12345/slug/ permalink pattern).
+  const links = await page.$$eval("a[href]", (as) => as.map((a) => a.href));
+  const fallback = links.find((href) => {
     try {
       const u = new URL(href);
       return u.host === host && /^\/\d{3,7}\//.test(u.pathname);
@@ -27,7 +61,7 @@ async function findLatestArticleUrl(page, siteUrl) {
       return false;
     }
   });
-  return articleLink || null;
+  return fallback || null;
 }
 
 /**
@@ -50,21 +84,23 @@ async function scrollThroughPage(page) {
   await page.waitForTimeout(500); // settle after scrolling back to top
 }
 
-/** Check each banner placement: present in DOM, and visibly rendered. */
+/** Check each banner placement: present in DOM, visibly rendered, and where
+ * it sits on the page (so we know how far down to crop the screenshot). */
 async function checkBanners(page) {
   const results = {};
+  let maxBottom = 0;
   for (const check of BANNER_CHECKS) {
     const handle = await page.$(check.selector);
     if (!handle) {
       results[check.key] = { found: false, rendered: false };
       continue;
     }
-    // "Rendered" = has non-zero size (not a collapsed empty placeholder)
     const box = await handle.boundingBox();
     const rendered = !!box && box.width > 10 && box.height > 10;
     results[check.key] = { found: true, rendered };
+    if (box) maxBottom = Math.max(maxBottom, box.y + box.height);
   }
-  return results;
+  return { results, maxBottom };
 }
 
 async function shootPage(browser, siteName, pageLabel, url, outDir) {
@@ -78,29 +114,31 @@ async function shootPage(browser, siteName, pageLabel, url, outDir) {
       await page.goto(url, { waitUntil: "networkidle", timeout: 45000 });
       await page.waitForTimeout(1500);
       // Scroll through the page so lazy-loaded sidebar/in-content ad slots
-      // actually render before we screenshot or check them.
+      // actually render before we check or screenshot them.
       await scrollThroughPage(page);
-      banners = await checkBanners(page);
+
+      const { results, maxBottom } = await checkBanners(page);
+      banners = results;
+
+      // Crop the screenshot to end just past the last banner placement
+      // (top banner → in-content banner → sidebar) instead of capturing
+      // the whole page, which on the homepage runs on for dozens more
+      // "Recent News" article cards that have nothing to do with banners.
+      const PADDING_BELOW = 250;
+      const pageHeight = await page.evaluate(
+        () => document.documentElement.scrollHeight
+      );
+      const cropHeight = maxBottom
+        ? Math.min(maxBottom + PADDING_BELOW, pageHeight)
+        : pageHeight; // fall back to full page if no banners were found at all
 
       const fileName = `${siteName}-${pageLabel}-${deviceKey}.png`;
       await page.screenshot({
         path: path.join(outDir, fileName),
-        fullPage: true,
+        clip: { x: 0, y: 0, width: viewport.width, height: cropHeight },
       });
 
-      // Dedicated close-up of the sidebar, if this page has one, so it
-      // doesn't get lost scrolling through the full-page shot.
-      let sidebarFile = null;
-      const sidebar = await page.$(SIDEBAR_CONTAINER_SELECTOR);
-      if (sidebar) {
-        const box = await sidebar.boundingBox();
-        if (box && box.width > 10 && box.height > 10) {
-          sidebarFile = `${siteName}-${pageLabel}-${deviceKey}-sidebar.png`;
-          await sidebar.screenshot({ path: path.join(outDir, sidebarFile) });
-        }
-      }
-
-      perUrl[deviceKey] = { file: fileName, sidebarFile, banners, ok: true };
+      perUrl[deviceKey] = { file: fileName, banners, ok: true };
       status = "ok";
     } catch (err) {
       perUrl[deviceKey] = { error: String(err), ok: false };

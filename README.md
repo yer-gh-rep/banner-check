@@ -1,6 +1,7 @@
 # FNN Banner Check
 
-Automated banner QA for the 12 Fintech News Network sites. Every 2 days (or
+Automated banner QA for the 12 Fintech News Network sites. Every Monday,
+Wednesday and Friday morning (or
 on demand), it screenshots the homepage and latest article on each site —
 desktop and mobile — checks that the top banner, in-content banner, and
 sidebar ad widgets actually rendered, publishes a gallery page, and posts a
@@ -26,7 +27,8 @@ summary + link to Google Chat. No installs needed on anyone's machine.
      (no trailing slash)
 
 4. **Check the schedule** in `.github/workflows/banner-check.yml` — it's set
-   to run every 2 days at 09:00 UTC. Adjust the `cron` line if you want a
+   to run Mon/Wed/Fri at 09:00 Singapore time (01:00 UTC). Adjust the `cron`
+   line if you want a
    different time.
 
 That's it. From here on, everything runs in GitHub's cloud — nobody needs
@@ -34,7 +36,7 @@ Node, Playwright, or a terminal on their own machine.
 
 ## How your colleague uses it
 
-- **Every 2 days**, a Google Chat message shows up with a ✅ or ⚠️ summary
+- **Every Monday, Wednesday, and Friday morning**, a Google Chat message shows up with a ✅ or ⚠️ summary
   and a link. She opens the link, sees a grid of screenshots per site
   (homepage + latest article, desktop + mobile), each tagged with which
   banner placements were found and rendered.
@@ -53,11 +55,11 @@ Node, Playwright, or a terminal on their own machine.
 | Sidebar ad widgets (Google Ad Manager) | `[id^="div-gpt-ad-"]` |
 
 Sidebar ads are lazy-loaded, so the script scrolls all the way through each
-page before checking/screenshotting — otherwise the sidebar can wrongly show
-as empty just because it never scrolled into view. Where a page has a
-sidebar (`.main-sidebar` — on this theme that's typically article pages, not
-the homepage), the gallery also shows a dedicated close-up crop of just the
-sidebar, so it's not lost scrolling through the full-page screenshot.
+page first to trigger them before checking or screenshotting. Each
+screenshot is then cropped to end just past the lowest banner placement
+found on that page (top banner → in-content banner → sidebar) — so you get
+one clean image per device per page, without it running on through the long
+"Recent News" list of unrelated articles underneath.
 
 These were found by inspecting fintechnews.sg's live markup. All 12 sites
 share the same WordPress theme, so they should mostly match — but if a

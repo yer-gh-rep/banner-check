@@ -12,7 +12,7 @@ export const SITES = [
   { name: "Australia", url: "https://fintechnews.au" },
   { name: "Hong Kong", url: "https://fintechnews.hk" },
   { name: "Switzerland", url: "https://fintechnews.ch" },
-  { name: "Armenia", url: "https://fintechnews.am" },
+  { name: "Americas", url: "https://fintechnews.am" },
 ];
 
 // Banner placements to check on every page. `selector` finds the slot,
@@ -35,11 +35,6 @@ export const BANNER_CHECKS = [
     selector: '[id^="div-gpt-ad-"]',
   },
 ];
-
-// Container to crop a dedicated close-up screenshot of, in addition to the
-// full-page shot. Only applies on pages that have a sidebar (article pages
-// mainly; the homepage may not use this same layout).
-export const SIDEBAR_CONTAINER_SELECTOR = ".main-sidebar";
 
 // How many days of screenshot folders to keep in the gallery/repo.
 export const RETENTION_DAYS = 14;

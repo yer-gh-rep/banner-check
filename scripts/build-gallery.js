@@ -29,13 +29,9 @@ function renderDevice(entry, siteName, label) {
   if (!entry || !entry.ok) {
     return `<div class="shot error"><p>❌ failed to capture</p></div>`;
   }
-  const sidebarBlock = entry.sidebarFile
-    ? `<img loading="lazy" class="sidebar-crop" src="${entry.sidebarFile}" alt="${siteName} ${label} sidebar close-up">`
-    : "";
   return `
     <div class="shot">
       <img loading="lazy" src="${entry.file}" alt="${siteName} ${label}">
-      ${sidebarBlock}
       <div class="banners">${bannerSummary(entry.banners)}</div>
     </div>`;
 }
@@ -94,7 +90,6 @@ function main() {
   .row { display: flex; gap: 16px; flex-wrap: wrap; }
   .shot { flex: 1 1 380px; max-width: 460px; border: 1px solid #eee; border-radius: 6px; overflow: hidden; background: #fafafa; }
   .shot img { width: 100%; display: block; border-bottom: 1px solid #eee; }
-  .shot img.sidebar-crop { max-height: 240px; object-fit: cover; object-position: top; background: #fff; }
   .shot.error { padding: 40px 16px; text-align: center; color: #b00020; }
   .banners { padding: 8px 10px; font-size: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
   .chk { padding: 2px 6px; border-radius: 4px; background: #f0f0f0; }
