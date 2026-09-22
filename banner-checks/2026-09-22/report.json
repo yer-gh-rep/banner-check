@@ -35,7 +35,7 @@
       },
       "article": {
         "desktop": {
-          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.sg/137621/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
+          "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.sg/137621/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
           "ok": false
         },
         "mobile": {
@@ -217,7 +217,7 @@
       },
       "article": {
         "desktop": {
-          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.my/60995/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
+          "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.my/60995/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
           "ok": false
         },
         "mobile": {
@@ -335,7 +335,7 @@
       },
       "article": {
         "desktop": {
-          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.ph/73661/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
+          "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.ph/73661/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
           "ok": false
         },
         "mobile": {
@@ -517,7 +517,7 @@
       },
       "article": {
         "desktop": {
-          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.au/123046/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
+          "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.au/123046/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
           "ok": false
         },
         "mobile": {
@@ -571,7 +571,7 @@
       },
       "article": {
         "desktop": {
-          "error": "TimeoutError: page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.hk/40846/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
+          "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.hk/40846/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
           "ok": false
         },
         "mobile": {
