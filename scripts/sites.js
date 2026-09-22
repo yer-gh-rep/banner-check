@@ -29,11 +29,6 @@ export const BANNER_CHECKS = [
     label: "In-content banner (above Recent News / above featured image)",
     selector: ".ad-banner",
   },
-  {
-    key: "sidebar-widgets",
-    label: "Sidebar ad widgets (Google Ad Manager slots)",
-    selector: '[id^="div-gpt-ad-"]',
-  },
 ];
 
 // How many days of screenshot folders to keep in the gallery/repo.

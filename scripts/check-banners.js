@@ -120,23 +120,30 @@ async function shootPage(browser, siteName, pageLabel, url, outDir) {
       const { results, maxBottom } = await checkBanners(page);
       banners = results;
 
-      // Crop the screenshot to end just past the last banner placement
-      // (top banner → in-content banner → sidebar) instead of capturing
-      // the whole page, which on the homepage runs on for dozens more
-      // "Recent News" article cards that have nothing to do with banners.
-      const PADDING_BELOW = 250;
-      const pageHeight = await page.evaluate(
-        () => document.documentElement.scrollHeight
-      );
-      const cropHeight = maxBottom
-        ? Math.min(maxBottom + PADDING_BELOW, pageHeight)
-        : pageHeight; // fall back to full page if no banners were found at all
-
       const fileName = `${siteName}-${pageLabel}-${deviceKey}.png`;
-      await page.screenshot({
-        path: path.join(outDir, fileName),
-        clip: { x: 0, y: 0, width: viewport.width, height: cropHeight },
-      });
+
+      if (deviceKey === "desktop") {
+        // Desktop: full page, uncropped — includes the sidebar so you can
+        // see webinar/report-download widgets etc., not just ad slots.
+        await page.screenshot({
+          path: path.join(outDir, fileName),
+          fullPage: true,
+        });
+      } else {
+        // Mobile: no sidebar to show, so crop to just past the main
+        // banners instead of scrolling through the full article/feed.
+        const PADDING_BELOW = 250;
+        const pageHeight = await page.evaluate(
+          () => document.documentElement.scrollHeight
+        );
+        const cropHeight = maxBottom
+          ? Math.min(maxBottom + PADDING_BELOW, pageHeight)
+          : pageHeight;
+        await page.screenshot({
+          path: path.join(outDir, fileName),
+          clip: { x: 0, y: 0, width: viewport.width, height: cropHeight },
+        });
+      }
 
       perUrl[deviceKey] = { file: fileName, banners, ok: true };
       status = "ok";

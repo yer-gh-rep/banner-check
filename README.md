@@ -3,9 +3,11 @@
 Automated banner QA for the 12 Fintech News Network sites. Every Monday,
 Wednesday and Friday morning (or
 on demand), it screenshots the homepage and latest article on each site —
-desktop and mobile — checks that the top banner, in-content banner, and
-sidebar ad widgets actually rendered, publishes a gallery page, and posts a
-summary + link to Google Chat. No installs needed on anyone's machine.
+checks that the top and in-content banners actually rendered, captures a
+full desktop screenshot (including the sidebar, so you can also see
+webinar/report widgets etc.) and a cropped mobile screenshot of the main
+banners, publishes a gallery page, and posts a summary + link to Google
+Chat. No installs needed on anyone's machine.
 
 ## One-time setup (~10 minutes)
 
@@ -52,14 +54,18 @@ Node, Playwright, or a terminal on their own machine.
 |---|---|
 | Top banner (above header) | `.ad-banner-a`, `.ad-banner-a-mobile` |
 | In-content banner (above Recent News / above article featured image) | `.ad-banner` |
-| Sidebar ad widgets (Google Ad Manager) | `[id^="div-gpt-ad-"]` |
 
-Sidebar ads are lazy-loaded, so the script scrolls all the way through each
-page first to trigger them before checking or screenshotting. Each
-screenshot is then cropped to end just past the lowest banner placement
-found on that page (top banner → in-content banner → sidebar) — so you get
-one clean image per device per page, without it running on through the long
-"Recent News" list of unrelated articles underneath.
+**Desktop** screenshots are full page, uncropped — this includes the
+sidebar as-is, since that's where webinar signups, report downloads, etc.
+live, and you already know which Google Ad Manager slots should or
+shouldn't appear there, so there's no separate automated check for those.
+
+**Mobile** screenshots are cropped to end just past the lowest of the two
+banner checks above, since there's no sidebar to see on mobile — this
+avoids scrolling through the long "Recent News" list of unrelated articles
+underneath. The page is still scrolled through fully first so any
+lazy-loaded in-content banner gets a chance to render before the crop
+height is measured.
 
 These were found by inspecting fintechnews.sg's live markup. All 12 sites
 share the same WordPress theme, so they should mostly match — but if a
