@@ -1,0 +1,15 @@
+{
+  "name": "fnn-banner-check",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automated banner QA screenshots for the Fintech News Network sites",
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check-banners.js",
+    "gallery": "node scripts/build-gallery.js",
+    "notify": "node scripts/notify-chat.js"
+  },
+  "dependencies": {
+    "playwright": "^1.47.0"
+  }
+}
