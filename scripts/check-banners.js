@@ -50,13 +50,18 @@ async function findLatestArticleUrl(page, siteUrl) {
     return sameHostDated[0].href;
   }
 
-  // Fallback: no dated <article> elements found — use the old heuristic
-  // (first link matching this network's /12345/slug/ permalink pattern).
+  // Fallback: no dated <article> elements found — grab the first link that
+  // looks like an article rather than nav/category/author/tag pages.
   const links = await page.$$eval("a[href]", (as) => as.map((a) => a.href));
+  const EXCLUDE = /\/(author|category|tag|page|feed|wp-content|wp-json)\//;
   const fallback = links.find((href) => {
     try {
       const u = new URL(href);
-      return u.host === host && /^\/\d{3,7}\//.test(u.pathname);
+      return (
+        u.host === host &&
+        u.pathname.length > 1 &&
+        !EXCLUDE.test(u.pathname)
+      );
     } catch {
       return false;
     }
@@ -103,54 +108,78 @@ async function checkBanners(page) {
   return { results, maxBottom };
 }
 
+async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewport, outDir) {
+  await page.goto(url, { waitUntil: "networkidle", timeout: 60000 });
+  await page.waitForTimeout(1500);
+  // Scroll through the page so lazy-loaded sidebar/in-content ad slots
+  // actually render before we check or screenshot them.
+  await scrollThroughPage(page);
+
+  const { results } = await checkBanners(page);
+  const fileName = `${siteName}-${pageLabel}-${deviceKey}.png`;
+
+  if (deviceKey === "desktop") {
+    // Desktop: full page, uncropped — includes the sidebar so you can
+    // see webinar/report-download widgets etc., not just ad slots.
+    await page.screenshot({
+      path: path.join(outDir, fileName),
+      fullPage: true,
+      timeout: 60000,
+    });
+  } else {
+    // Mobile: cap at two screen heights so the banners are always
+    // visible near the top of the image, rather than trusting wherever
+    // the banner's measured position happens to land after scrolling.
+    const MOBILE_MAX_SCREENS = 2;
+    const pageHeight = await page.evaluate(
+      () => document.documentElement.scrollHeight
+    );
+    const cropHeight = Math.min(
+      viewport.height * MOBILE_MAX_SCREENS,
+      pageHeight
+    );
+    await page.screenshot({
+      path: path.join(outDir, fileName),
+      clip: { x: 0, y: 0, width: viewport.width, height: cropHeight },
+      timeout: 60000,
+    });
+  }
+
+  return { file: fileName, banners: results, ok: true };
+}
+
 async function shootPage(browser, siteName, pageLabel, url, outDir) {
   const perUrl = {};
   for (const [deviceKey, viewport] of Object.entries(VIEWPORTS)) {
-    const context = await browser.newContext({ viewport });
-    const page = await context.newPage();
     let status = "error";
-    let banners = {};
-    try {
-      await page.goto(url, { waitUntil: "networkidle", timeout: 45000 });
-      await page.waitForTimeout(1500);
-      // Scroll through the page so lazy-loaded sidebar/in-content ad slots
-      // actually render before we check or screenshot them.
-      await scrollThroughPage(page);
+    let lastError = null;
 
-      const { results, maxBottom } = await checkBanners(page);
-      banners = results;
-
-      const fileName = `${siteName}-${pageLabel}-${deviceKey}.png`;
-
-      if (deviceKey === "desktop") {
-        // Desktop: full page, uncropped — includes the sidebar so you can
-        // see webinar/report-download widgets etc., not just ad slots.
-        await page.screenshot({
-          path: path.join(outDir, fileName),
-          fullPage: true,
-        });
-      } else {
-        // Mobile: no sidebar to show, so crop to just past the main
-        // banners instead of scrolling through the full article/feed.
-        const PADDING_BELOW = 250;
-        const pageHeight = await page.evaluate(
-          () => document.documentElement.scrollHeight
+    // Try up to twice — a slow/flaky load shouldn't sink the whole capture.
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      const context = await browser.newContext({ viewport });
+      const page = await context.newPage();
+      try {
+        perUrl[deviceKey] = await captureOnePage(
+          page,
+          siteName,
+          pageLabel,
+          url,
+          deviceKey,
+          viewport,
+          outDir
         );
-        const cropHeight = maxBottom
-          ? Math.min(maxBottom + PADDING_BELOW, pageHeight)
-          : pageHeight;
-        await page.screenshot({
-          path: path.join(outDir, fileName),
-          clip: { x: 0, y: 0, width: viewport.width, height: cropHeight },
-        });
+        status = "ok";
+      } catch (err) {
+        lastError = err;
+      } finally {
+        await context.close();
       }
+      if (status === "ok") break;
+      if (attempt === 1) console.log(`    retrying ${pageLabel} [${deviceKey}]…`);
+    }
 
-      perUrl[deviceKey] = { file: fileName, banners, ok: true };
-      status = "ok";
-    } catch (err) {
-      perUrl[deviceKey] = { error: String(err), ok: false };
-    } finally {
-      await context.close();
+    if (status !== "ok") {
+      perUrl[deviceKey] = { error: String(lastError), ok: false };
     }
     console.log(`  ${pageLabel} [${deviceKey}]: ${status}`);
   }
@@ -172,7 +201,7 @@ async function main() {
     try {
       const context = await browser.newContext({ viewport: VIEWPORTS.desktop });
       const page = await context.newPage();
-      await page.goto(site.url, { waitUntil: "networkidle", timeout: 45000 });
+      await page.goto(site.url, { waitUntil: "networkidle", timeout: 60000 });
       const articleUrl = await findLatestArticleUrl(page, site.url);
       await context.close();
 

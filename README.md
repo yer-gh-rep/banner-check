@@ -60,12 +60,11 @@ sidebar as-is, since that's where webinar signups, report downloads, etc.
 live, and you already know which Google Ad Manager slots should or
 shouldn't appear there, so there's no separate automated check for those.
 
-**Mobile** screenshots are cropped to end just past the lowest of the two
-banner checks above, since there's no sidebar to see on mobile — this
-avoids scrolling through the long "Recent News" list of unrelated articles
-underneath. The page is still scrolled through fully first so any
-lazy-loaded in-content banner gets a chance to render before the crop
-height is measured.
+**Mobile** screenshots are capped at two screen heights (viewport height ×
+2), so the banners stay near the top of the image instead of the crop
+landing further down than expected. The page is still scrolled through
+fully first so any lazy-loaded in-content banner gets a chance to render
+before the screenshot is taken.
 
 These were found by inspecting fintechnews.sg's live markup. All 12 sites
 share the same WordPress theme, so they should mostly match — but if a
