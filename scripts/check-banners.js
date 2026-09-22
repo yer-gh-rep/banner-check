@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 import fs from "node:fs";
 import path from "node:path";
-import { SITES, BANNER_CHECKS } from "./sites.js";
+import { SITES, BANNER_CHECKS, SIDEBAR_CONTAINER_SELECTOR } from "./sites.js";
 
 const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 const OUT_DIR = path.join("banner-checks", today);
@@ -30,6 +30,26 @@ async function findLatestArticleUrl(page, siteUrl) {
   return articleLink || null;
 }
 
+/**
+ * Sidebar/in-content ad slots are usually lazy-loaded: they only render once
+ * scrolled into view. A single full-page screenshot taken from the top does
+ * NOT trigger that, so it can wrongly show them as empty. Scroll the whole
+ * page in steps first so every lazy slot gets a chance to load.
+ */
+async function scrollThroughPage(page) {
+  await page.evaluate(async () => {
+    const step = Math.max(300, Math.floor(window.innerHeight * 0.8));
+    let last = -1;
+    while (document.scrollingElement.scrollTop !== last) {
+      last = document.scrollingElement.scrollTop;
+      window.scrollBy(0, step);
+      await new Promise((r) => setTimeout(r, 350));
+    }
+    window.scrollTo(0, 0);
+  });
+  await page.waitForTimeout(500); // settle after scrolling back to top
+}
+
 /** Check each banner placement: present in DOM, and visibly rendered. */
 async function checkBanners(page) {
   const results = {};
@@ -56,15 +76,31 @@ async function shootPage(browser, siteName, pageLabel, url, outDir) {
     let banners = {};
     try {
       await page.goto(url, { waitUntil: "networkidle", timeout: 45000 });
-      // give lazy-loaded ad slots a moment to render
-      await page.waitForTimeout(2500);
+      await page.waitForTimeout(1500);
+      // Scroll through the page so lazy-loaded sidebar/in-content ad slots
+      // actually render before we screenshot or check them.
+      await scrollThroughPage(page);
       banners = await checkBanners(page);
+
       const fileName = `${siteName}-${pageLabel}-${deviceKey}.png`;
       await page.screenshot({
         path: path.join(outDir, fileName),
         fullPage: true,
       });
-      perUrl[deviceKey] = { file: fileName, banners, ok: true };
+
+      // Dedicated close-up of the sidebar, if this page has one, so it
+      // doesn't get lost scrolling through the full-page shot.
+      let sidebarFile = null;
+      const sidebar = await page.$(SIDEBAR_CONTAINER_SELECTOR);
+      if (sidebar) {
+        const box = await sidebar.boundingBox();
+        if (box && box.width > 10 && box.height > 10) {
+          sidebarFile = `${siteName}-${pageLabel}-${deviceKey}-sidebar.png`;
+          await sidebar.screenshot({ path: path.join(outDir, sidebarFile) });
+        }
+      }
+
+      perUrl[deviceKey] = { file: fileName, sidebarFile, banners, ok: true };
       status = "ok";
     } catch (err) {
       perUrl[deviceKey] = { error: String(err), ok: false };

@@ -36,5 +36,10 @@ export const BANNER_CHECKS = [
   },
 ];
 
+// Container to crop a dedicated close-up screenshot of, in addition to the
+// full-page shot. Only applies on pages that have a sidebar (article pages
+// mainly; the homepage may not use this same layout).
+export const SIDEBAR_CONTAINER_SELECTOR = ".main-sidebar";
+
 // How many days of screenshot folders to keep in the gallery/repo.
 export const RETENTION_DAYS = 14;

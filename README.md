@@ -1,4 +1,4 @@
-# Banner Check
+# FNN Banner Check
 
 Automated banner QA for the 12 Fintech News Network sites. Every 2 days (or
 on demand), it screenshots the homepage and latest article on each site —
@@ -52,6 +52,13 @@ Node, Playwright, or a terminal on their own machine.
 | In-content banner (above Recent News / above article featured image) | `.ad-banner` |
 | Sidebar ad widgets (Google Ad Manager) | `[id^="div-gpt-ad-"]` |
 
+Sidebar ads are lazy-loaded, so the script scrolls all the way through each
+page before checking/screenshotting — otherwise the sidebar can wrongly show
+as empty just because it never scrolled into view. Where a page has a
+sidebar (`.main-sidebar` — on this theme that's typically article pages, not
+the homepage), the gallery also shows a dedicated close-up crop of just the
+sidebar, so it's not lost scrolling through the full-page screenshot.
+
 These were found by inspecting fintechnews.sg's live markup. All 12 sites
 share the same WordPress theme, so they should mostly match — but if a
 banner shows as ❌ on a site where you know it's actually fine, that site's
@@ -66,6 +73,22 @@ npx playwright install --with-deps chromium
 npm run check      # takes screenshots into banner-checks/<today>/
 npm run gallery    # builds banner-checks/<today>/index.html
 ```
+
+## Keeping this out of Google
+
+Every generated page includes `<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">`,
+and a `robots.txt` under `banner-checks/` disallows crawling of the whole
+gallery. Together these keep the screenshots out of Google's index and out
+of "site:" search results.
+
+**Important caveat:** this stops it from being *indexed*, not from being
+*publicly reachable*. GitHub Pages sites are public URLs by default — anyone
+with the exact link can open it, even off a private repo, unless your GitHub
+plan supports restricting Pages visibility (some paid plans/Enterprise). If
+you need the gallery to require a login rather than just be unlisted, that's
+a separate setting under Settings → Pages → Visibility — let me know if that
+matters and I can adjust the approach instead (e.g. a private workflow
+artifact download rather than a public Pages site).
 
 ## Files
 

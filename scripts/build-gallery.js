@@ -29,9 +29,13 @@ function renderDevice(entry, siteName, label) {
   if (!entry || !entry.ok) {
     return `<div class="shot error"><p>❌ failed to capture</p></div>`;
   }
+  const sidebarBlock = entry.sidebarFile
+    ? `<img loading="lazy" class="sidebar-crop" src="${entry.sidebarFile}" alt="${siteName} ${label} sidebar close-up">`
+    : "";
   return `
     <div class="shot">
       <img loading="lazy" src="${entry.file}" alt="${siteName} ${label}">
+      ${sidebarBlock}
       <div class="banners">${bannerSummary(entry.banners)}</div>
     </div>`;
 }
@@ -77,6 +81,7 @@ function main() {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <title>Banner check — ${today}</title>
 <style>
   body { font-family: system-ui, sans-serif; margin: 0; padding: 24px; background: #f7f7f8; color: #1a1a1a; }
@@ -89,6 +94,7 @@ function main() {
   .row { display: flex; gap: 16px; flex-wrap: wrap; }
   .shot { flex: 1 1 380px; max-width: 460px; border: 1px solid #eee; border-radius: 6px; overflow: hidden; background: #fafafa; }
   .shot img { width: 100%; display: block; border-bottom: 1px solid #eee; }
+  .shot img.sidebar-crop { max-height: 240px; object-fit: cover; object-position: top; background: #fff; }
   .shot.error { padding: 40px 16px; text-align: center; color: #b00020; }
   .banners { padding: 8px 10px; font-size: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
   .chk { padding: 2px 6px; border-radius: 4px; background: #f0f0f0; }
@@ -126,13 +132,24 @@ function main() {
     .sort()
     .reverse();
   const listHtml = `<!doctype html>
-<html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=${today}/index.html">
+<html><head><meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta http-equiv="refresh" content="0; url=${today}/index.html">
 <title>Banner checks</title></head>
 <body style="font-family:system-ui,sans-serif;padding:24px;">
 <p>Redirecting to latest run (${today})…</p>
 <ul>${allDates.map((d) => `<li><a href="${d}/index.html">${d}</a></li>`).join("")}</ul>
 </body></html>`;
   fs.writeFileSync(path.join(ROOT, "index.html"), listHtml);
+
+  // Block crawlers from this whole banner-checks/ subtree. GitHub Pages
+  // serves this at /<repo>/banner-checks/robots.txt — combined with the
+  // noindex meta tags above, this keeps the screenshots out of search
+  // results even though the URL itself is still technically public.
+  fs.writeFileSync(
+    path.join(ROOT, "robots.txt"),
+    "User-agent: *\nDisallow: /\n"
+  );
 
   // Emit a small summary file for the Chat notification step
   fs.writeFileSync(
