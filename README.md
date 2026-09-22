@@ -1,4 +1,4 @@
-# FNN Banner Check
+# Banner Check
 
 Automated banner QA for the 12 Fintech News Network sites. Every 2 days (or
 on demand), it screenshots the homepage and latest article on each site —
