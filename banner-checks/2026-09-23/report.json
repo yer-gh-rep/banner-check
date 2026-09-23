@@ -6,6 +6,7 @@
       "home": {
         "desktop": {
           "file": "Singapore-home-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -24,6 +25,7 @@
         },
         "mobile": {
           "file": "Singapore-home-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -44,6 +46,7 @@
       "article": {
         "desktop": {
           "file": "Singapore-article-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -62,6 +65,10 @@
         },
         "mobile": {
           "file": "Singapore-article-mobile.png",
+          "extraFiles": [
+            "Singapore-article-mobile-in-article-1.png",
+            "Singapore-article-mobile-in-article-2.png"
+          ],
           "banners": {
             "top-banner": {
               "found": true,
@@ -86,6 +93,7 @@
       "home": {
         "desktop": {
           "file": "UAE-home-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -104,6 +112,7 @@
         },
         "mobile": {
           "file": "UAE-home-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -124,6 +133,7 @@
       "article": {
         "desktop": {
           "file": "UAE-article-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -142,6 +152,7 @@
         },
         "mobile": {
           "file": "UAE-article-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -166,6 +177,7 @@
       "home": {
         "desktop": {
           "file": "Africa-home-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -184,6 +196,7 @@
         },
         "mobile": {
           "file": "Africa-home-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -204,6 +217,7 @@
       "article": {
         "desktop": {
           "file": "Africa-article-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -222,6 +236,7 @@
         },
         "mobile": {
           "file": "Africa-article-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -246,6 +261,7 @@
       "home": {
         "desktop": {
           "file": "Malaysia-home-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -264,6 +280,7 @@
         },
         "mobile": {
           "file": "Malaysia-home-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -284,6 +301,7 @@
       "article": {
         "desktop": {
           "file": "Malaysia-article-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -302,6 +320,7 @@
         },
         "mobile": {
           "file": "Malaysia-article-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -326,6 +345,7 @@
       "home": {
         "desktop": {
           "file": "Indonesia-home-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -344,6 +364,7 @@
         },
         "mobile": {
           "file": "Indonesia-home-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -364,6 +385,7 @@
       "article": {
         "desktop": {
           "file": "Indonesia-article-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -382,6 +404,7 @@
         },
         "mobile": {
           "file": "Indonesia-article-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -406,6 +429,7 @@
       "home": {
         "desktop": {
           "file": "Philippines-home-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -424,6 +448,7 @@
         },
         "mobile": {
           "file": "Philippines-home-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -444,6 +469,7 @@
       "article": {
         "desktop": {
           "file": "Philippines-article-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -462,6 +488,7 @@
         },
         "mobile": {
           "file": "Philippines-article-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -486,6 +513,7 @@
       "home": {
         "desktop": {
           "file": "Baltic-home-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -504,6 +532,7 @@
         },
         "mobile": {
           "file": "Baltic-home-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -524,6 +553,7 @@
       "article": {
         "desktop": {
           "file": "Baltic-article-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -542,6 +572,7 @@
         },
         "mobile": {
           "file": "Baltic-article-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -566,6 +597,7 @@
       "home": {
         "desktop": {
           "file": "Nordics-home-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -584,6 +616,7 @@
         },
         "mobile": {
           "file": "Nordics-home-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -604,6 +637,7 @@
       "article": {
         "desktop": {
           "file": "Nordics-article-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -622,6 +656,7 @@
         },
         "mobile": {
           "file": "Nordics-article-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -646,6 +681,7 @@
       "home": {
         "desktop": {
           "file": "Australia-home-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -664,6 +700,7 @@
         },
         "mobile": {
           "file": "Australia-home-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -684,6 +721,7 @@
       "article": {
         "desktop": {
           "file": "Australia-article-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -702,6 +740,7 @@
         },
         "mobile": {
           "file": "Australia-article-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -726,6 +765,7 @@
       "home": {
         "desktop": {
           "file": "Hong Kong-home-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -744,6 +784,7 @@
         },
         "mobile": {
           "file": "Hong Kong-home-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -764,6 +805,7 @@
       "article": {
         "desktop": {
           "file": "Hong Kong-article-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -782,6 +824,7 @@
         },
         "mobile": {
           "file": "Hong Kong-article-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": true,
@@ -806,6 +849,7 @@
       "home": {
         "desktop": {
           "file": "Switzerland-home-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -824,6 +868,7 @@
         },
         "mobile": {
           "file": "Switzerland-home-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -844,6 +889,7 @@
       "article": {
         "desktop": {
           "file": "Switzerland-article-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -862,6 +908,7 @@
         },
         "mobile": {
           "file": "Switzerland-article-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -886,6 +933,7 @@
       "home": {
         "desktop": {
           "file": "Americas-home-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -904,6 +952,7 @@
         },
         "mobile": {
           "file": "Americas-home-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -924,6 +973,7 @@
       "article": {
         "desktop": {
           "file": "Americas-article-desktop.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
@@ -942,6 +992,7 @@
         },
         "mobile": {
           "file": "Americas-article-mobile.png",
+          "extraFiles": [],
           "banners": {
             "top-banner": {
               "found": false,
