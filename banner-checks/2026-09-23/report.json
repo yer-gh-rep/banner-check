@@ -14,6 +14,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": true,
+              "rendered": true
             }
           },
           "ok": true
@@ -26,6 +30,10 @@
               "rendered": true
             },
             "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
               "found": true,
               "rendered": true
             }
@@ -44,6 +52,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": true,
+              "rendered": true
             }
           },
           "ok": true
@@ -58,12 +70,16 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": true,
+              "rendered": true
             }
           },
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.sg/137604/ai/singapore-ai-lending-loan-comparison/"
+      "articleUrl": "https://fintechnews.sg/137690/security/meta-scam-singapore-facebook-instagram/"
     },
     "UAE": {
       "url": "https://fintechnews.ae",
@@ -78,6 +94,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -92,6 +112,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -108,6 +132,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -122,12 +150,16 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.ae/33546/qatar/doha-investment-qatar-qia-portfolio/"
+      "articleUrl": "https://fintechnews.ae/33566/qatar/qia-jp-morgan-partnership-20-billion/"
     },
     "Africa": {
       "url": "https://fintechnews.africa",
@@ -142,6 +174,10 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -154,6 +190,10 @@
               "rendered": false
             },
             "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
               "found": false,
               "rendered": false
             }
@@ -172,6 +212,10 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -184,6 +228,10 @@
               "rendered": false
             },
             "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
               "found": false,
               "rendered": false
             }
@@ -206,6 +254,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -220,6 +272,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -236,6 +292,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -250,12 +310,16 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.my/60983/financial-inclusion/mastercard-gxbank-financial-health-study/"
+      "articleUrl": "https://fintechnews.my/61002/digital-banking-news-malaysia/ryt-bank-cashback-interest-campaigns/"
     },
     "Indonesia": {
       "url": "https://fintechnews.id",
@@ -270,6 +334,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -284,6 +352,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -300,6 +372,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -314,6 +390,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -334,6 +414,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -348,6 +432,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -364,6 +452,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -378,6 +470,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -398,6 +494,10 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -410,6 +510,10 @@
               "rendered": false
             },
             "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
               "found": false,
               "rendered": false
             }
@@ -428,6 +532,10 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -440,6 +548,10 @@
               "rendered": false
             },
             "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
               "found": false,
               "rendered": false
             }
@@ -462,6 +574,10 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -474,6 +590,10 @@
               "rendered": false
             },
             "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
               "found": false,
               "rendered": false
             }
@@ -492,6 +612,10 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -504,6 +628,10 @@
               "rendered": false
             },
             "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
               "found": false,
               "rendered": false
             }
@@ -526,6 +654,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -540,6 +672,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -556,6 +692,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -570,12 +710,16 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.au/123005/payments/sokin-leadership-expansion-australia/"
+      "articleUrl": "https://fintechnews.au/123060/wealthtech/asic-remara-private-credit/"
     },
     "Hong Kong": {
       "url": "https://fintechnews.hk",
@@ -590,6 +734,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -604,6 +752,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -620,6 +772,10 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -634,12 +790,16 @@
             "in-content-banner": {
               "found": true,
               "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.hk/40820/fintechkorea/kakao-fireblocks-stablecoin-korea-mou/"
+      "articleUrl": "https://fintechnews.hk/40862/ai/deutsche-bank-agentic-ai-kyc-hong-kong/"
     },
     "Switzerland": {
       "url": "https://fintechnews.ch",
@@ -654,6 +814,10 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -666,6 +830,10 @@
               "rendered": false
             },
             "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
               "found": false,
               "rendered": false
             }
@@ -684,6 +852,10 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -698,12 +870,16 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.ch/roboadvisor_onlinewealth/findependent-pillar-3a-launch/85866/"
+      "articleUrl": "https://fintechnews.ch/blockchain_bitcoin/relai-funding-round-bitcoin-savings-valuation/85882/"
     },
     "Americas": {
       "url": "https://fintechnews.am",
@@ -718,6 +894,10 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -730,6 +910,10 @@
               "rendered": false
             },
             "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
               "found": false,
               "rendered": false
             }
@@ -748,6 +932,10 @@
             "in-content-banner": {
               "found": false,
               "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
             }
           },
           "ok": true
@@ -760,6 +948,10 @@
               "rendered": false
             },
             "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
               "found": false,
               "rendered": false
             }
