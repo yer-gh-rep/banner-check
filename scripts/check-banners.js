@@ -131,7 +131,7 @@ async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewpor
   // actually render before we check or screenshot them.
   await scrollThroughPage(page);
 
-  const { results } = await checkBanners(page);
+  const { results, maxBottom } = await checkBanners(page);
   const fileName = `${siteName}-${pageLabel}-${deviceKey}.png`;
 
   if (deviceKey === "desktop") {
@@ -143,17 +143,19 @@ async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewpor
       timeout: 60000,
     });
   } else {
-    // Mobile: cap at two screen heights so the banners are always
-    // visible near the top of the image, rather than trusting wherever
-    // the banner's measured position happens to land after scrolling.
+    // Mobile: crop to just past the lowest banner found, so the homepage
+    // (banners sit higher, "Recent News" starts right after) doesn't
+    // overshoot into that list. Capped at 2 screen heights as a ceiling,
+    // in case no banner position was measured at all.
+    const PADDING_BELOW = 200;
     const MOBILE_MAX_SCREENS = 2;
     const pageHeight = await page.evaluate(
       () => document.documentElement.scrollHeight
     );
-    const cropHeight = Math.min(
-      viewport.height * MOBILE_MAX_SCREENS,
-      pageHeight
-    );
+    const ceiling = Math.min(viewport.height * MOBILE_MAX_SCREENS, pageHeight);
+    const cropHeight = maxBottom
+      ? Math.min(maxBottom + PADDING_BELOW, ceiling)
+      : ceiling;
     await page.screenshot({
       path: path.join(outDir, fileName),
       clip: { x: 0, y: 0, width: viewport.width, height: cropHeight },
