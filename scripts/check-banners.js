@@ -90,7 +90,7 @@ async function scrollThroughPage(page) {
     }
     window.scrollTo(0, 0);
   });
-  await page.waitForTimeout(500); // settle after scrolling back to top
+  await page.waitForTimeout(1000); // settle after scrolling back to top
 }
 
 /** Check each banner placement: present in DOM, visibly rendered, and where
@@ -143,19 +143,22 @@ async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewpor
       timeout: 60000,
     });
   } else {
-    // Mobile: crop to just past the lowest banner found, so the homepage
-    // (banners sit higher, "Recent News" starts right after) doesn't
-    // overshoot into that list. Capped at 2 screen heights as a ceiling,
-    // in case no banner position was measured at all.
+    // Mobile: crop to just past the lowest banner found. On the homepage
+    // that means stopping before "Recent News" (banners sit high up), so
+    // cap at 2 screens there. On article pages, in-article (Advanced Ads)
+    // placements can sit much further down mid-post — don't cap those,
+    // let it reach wherever the lowest found banner actually is.
     const PADDING_BELOW = 200;
-    const MOBILE_MAX_SCREENS = 2;
     const pageHeight = await page.evaluate(
       () => document.documentElement.scrollHeight
     );
-    const ceiling = Math.min(viewport.height * MOBILE_MAX_SCREENS, pageHeight);
+    const ceiling =
+      pageLabel === "home"
+        ? Math.min(viewport.height * 2, pageHeight)
+        : pageHeight;
     const cropHeight = maxBottom
       ? Math.min(maxBottom + PADDING_BELOW, ceiling)
-      : ceiling;
+      : Math.min(viewport.height * 2, pageHeight); // no banner found at all — fall back to 2 screens
     await page.screenshot({
       path: path.join(outDir, fileName),
       clip: { x: 0, y: 0, width: viewport.width, height: cropHeight },

@@ -29,6 +29,11 @@ export const BANNER_CHECKS = [
     label: "In-content banner (above Recent News / above featured image)",
     selector: ".ad-banner",
   },
+  {
+    key: "in-article-banner",
+    label: "In-article banner (Advanced Ads, between paragraphs)",
+    selector: ".fintech-entity-placement",
+  },
 ];
 
 // How many days of screenshot folders to keep in the gallery/repo.

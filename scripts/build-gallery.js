@@ -7,22 +7,48 @@ const today = new Date().toISOString().slice(0, 10);
 const OUT_DIR = path.join(ROOT, today);
 const reportPath = path.join(OUT_DIR, "report.json");
 
-function statusIcon(banners) {
-  if (!banners) return "❔";
-  const allOk = BANNER_CHECKS.every((c) => banners[c.key]?.rendered);
-  const anyMissing = BANNER_CHECKS.some((c) => !banners[c.key]?.found);
-  if (allOk) return "✅";
-  if (anyMissing) return "❌";
-  return "⚠️";
-}
+/**
+ * Compare each banner placement across desktop vs mobile for one page.
+ * Each device was captured in its own real browser context at that exact
+ * viewport, so "found + rendered" there already reflects whether that
+ * device's version is genuinely showing — no guessing needed about which
+ * markup belongs to which device.
+ *   - present on both  → ok (✅)
+ *   - present on neither → not configured here, not an error (— greyed out)
+ *   - present on only one → a real mismatch (❌)
+ */
+function compareBanners(desktopEntry, mobileEntry) {
+  const desktopFailed = desktopEntry && !desktopEntry.ok;
+  const mobileFailed = mobileEntry && !mobileEntry.ok;
 
-function bannerSummary(banners) {
-  if (!banners) return "no data";
   return BANNER_CHECKS.map((c) => {
-    const r = banners[c.key];
-    const ok = r?.found && r?.rendered;
-    return `<span class="chk ${ok ? "ok" : "bad"}" title="${c.label}">${ok ? "✅" : "❌"} ${c.label}</span>`;
-  }).join(" ");
+    if (desktopFailed || mobileFailed) {
+      return {
+        cls: "unknown",
+        html: `<span class="chk unknown" title="${c.label} — capture failed, unknown">❔ ${c.label}</span>`,
+      };
+    }
+
+    const d = desktopEntry?.banners?.[c.key];
+    const m = mobileEntry?.banners?.[c.key];
+    const dOk = !!(d && d.found && d.rendered);
+    const mOk = !!(m && m.found && m.rendered);
+
+    let icon, cls, state;
+    if (dOk && mOk) {
+      icon = "✅"; cls = "ok"; state = "ok on both";
+    } else if (!dOk && !mOk) {
+      icon = "—"; cls = "none"; state = "not present (not configured here)";
+    } else {
+      icon = "❌"; cls = "mismatch";
+      state = dOk ? "showing on desktop, missing on mobile" : "showing on mobile, missing on desktop";
+    }
+
+    return {
+      cls,
+      html: `<span class="chk ${cls}" title="${c.label} — ${state}">${icon} ${c.label}</span>`,
+    };
+  });
 }
 
 function renderDevice(entry, siteName, label) {
@@ -32,7 +58,6 @@ function renderDevice(entry, siteName, label) {
   return `
     <div class="shot">
       <img loading="lazy" src="${entry.file}" alt="${siteName} ${label}">
-      <div class="banners">${bannerSummary(entry.banners)}</div>
     </div>`;
 }
 
@@ -56,15 +81,28 @@ function main() {
     );
     if (siteFailed) overallOk = false;
 
+    const homeComparisons = compareBanners(homeDesktop, homeMobile);
+    const artComparisons = compareBanners(artDesktop, artMobile);
+    const overallSiteIcon =
+      homeComparisons.some((c) => c.cls === "mismatch") ||
+      artComparisons.some((c) => c.cls === "mismatch")
+        ? "❌"
+        : homeComparisons.some((c) => c.cls === "ok") ||
+          artComparisons.some((c) => c.cls === "ok")
+        ? "✅"
+        : "—";
+
     cards += `
       <section class="site">
-        <h2>${statusIcon(homeDesktop?.banners)} ${siteName} <a href="${site.url}" target="_blank">${site.url}</a></h2>
+        <h2>${overallSiteIcon} ${siteName} <a href="${site.url}" target="_blank">${site.url}</a></h2>
         <h3>Homepage</h3>
+        <div class="banners">${homeComparisons.map((c) => c.html).join(" ")}</div>
         <div class="row">
           ${renderDevice(homeDesktop, siteName, "home desktop")}
           ${renderDevice(homeMobile, siteName, "home mobile")}
         </div>
         <h3>Latest article ${site.articleUrl ? `— <a href="${site.articleUrl}" target="_blank">${site.articleUrl}</a>` : "(not found)"}</h3>
+        <div class="banners">${artComparisons.map((c) => c.html).join(" ")}</div>
         <div class="row">
           ${renderDevice(artDesktop, siteName, "article desktop")}
           ${renderDevice(artMobile, siteName, "article mobile")}
@@ -91,9 +129,12 @@ function main() {
   .shot { flex: 1 1 380px; max-width: 460px; border: 1px solid #eee; border-radius: 6px; overflow: hidden; background: #fafafa; }
   .shot img { width: 100%; display: block; border-bottom: 1px solid #eee; }
   .shot.error { padding: 40px 16px; text-align: center; color: #b00020; }
-  .banners { padding: 8px 10px; font-size: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .banners { padding: 4px 0 12px; font-size: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
   .chk { padding: 2px 6px; border-radius: 4px; background: #f0f0f0; }
-  .chk.bad { background: #fde8e8; color: #a00; }
+  .chk.mismatch { background: #fde8e8; color: #a00; }
+  .chk.none { background: #f0f0f0; color: #999; }
+  .chk.ok { background: #e8f7ec; color: #1a7a3a; }
+  .chk.unknown { background: #fff8e1; color: #8a6d00; }
   .index-link { margin-bottom: 20px; display: inline-block; }
 </style>
 </head>
