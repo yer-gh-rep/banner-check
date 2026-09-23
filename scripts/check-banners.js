@@ -90,27 +90,39 @@ async function scrollThroughPage(page) {
 }
 
 /** Check each banner placement: present in DOM, visibly rendered, and where
- * it sits on the page (so we know how far down to crop the screenshot). */
+ * it sits on the page. A selector can match multiple elements (e.g. a
+ * desktop-only container and a mobile-only container for the same
+ * placement) — "rendered" means at least one of them actually has size,
+ * not just the first match in DOM order (which may be the hidden one). */
 async function checkBanners(page) {
   const results = {};
   let maxBottom = 0;
   for (const check of BANNER_CHECKS) {
-    const handle = await page.$(check.selector);
-    if (!handle) {
+    const handles = await page.$$(check.selector);
+    if (handles.length === 0) {
       results[check.key] = { found: false, rendered: false };
       continue;
     }
-    const box = await handle.boundingBox();
-    const rendered = !!box && box.width > 10 && box.height > 10;
+    let rendered = false;
+    for (const handle of handles) {
+      const box = await handle.boundingBox();
+      if (box && box.width > 10 && box.height > 10) {
+        rendered = true;
+        maxBottom = Math.max(maxBottom, box.y + box.height);
+      }
+    }
     results[check.key] = { found: true, rendered };
-    if (box) maxBottom = Math.max(maxBottom, box.y + box.height);
   }
   return { results, maxBottom };
 }
 
 async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewport, outDir) {
-  await page.goto(url, { waitUntil: "networkidle", timeout: 60000 });
-  await page.waitForTimeout(1500);
+  // "networkidle" never resolves on pages with a video embed (continuous
+  // buffering/analytics requests), causing a guaranteed timeout on every
+  // "Videos" category post. Wait for the DOM instead, then give assets a
+  // fixed window to settle.
+  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
+  await page.waitForTimeout(3000);
   // Scroll through the page so lazy-loaded sidebar/in-content ad slots
   // actually render before we check or screenshot them.
   await scrollThroughPage(page);
@@ -201,7 +213,8 @@ async function main() {
     try {
       const context = await browser.newContext({ viewport: VIEWPORTS.desktop });
       const page = await context.newPage();
-      await page.goto(site.url, { waitUntil: "networkidle", timeout: 60000 });
+      await page.goto(site.url, { waitUntil: "domcontentloaded", timeout: 45000 });
+      await page.waitForTimeout(2000);
       const articleUrl = await findLatestArticleUrl(page, site.url);
       await context.close();
 
