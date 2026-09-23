@@ -16,6 +16,8 @@ const VIEWPORTS = {
  * Find the genuinely most recent article on the homepage by reading each
  * article's actual publish timestamp — not just DOM order, which can put a
  * sponsored post or a sidebar widget ahead of the real latest article.
+ * Skips the "Videos" category, since those pages embed a video player that
+ * keeps making network requests indefinitely and can hang the page load.
  */
 async function findLatestArticleUrl(page, siteUrl) {
   const host = new URL(siteUrl).host;
@@ -37,7 +39,8 @@ async function findLatestArticleUrl(page, siteUrl) {
 
   const sameHostDated = candidates.filter((c) => {
     try {
-      return new URL(c.href).host === host;
+      const u = new URL(c.href);
+      return u.host === host && !/\/videos\//i.test(u.pathname);
     } catch {
       return false;
     }
@@ -51,9 +54,10 @@ async function findLatestArticleUrl(page, siteUrl) {
   }
 
   // Fallback: no dated <article> elements found — grab the first link that
-  // looks like an article rather than nav/category/author/tag pages.
+  // looks like an article rather than nav/category/author/tag pages, and
+  // skip the Videos category (video embeds can hang page loads).
   const links = await page.$$eval("a[href]", (as) => as.map((a) => a.href));
-  const EXCLUDE = /\/(author|category|tag|page|feed|wp-content|wp-json)\//;
+  const EXCLUDE = /\/(author|category|tag|page|feed|wp-content|wp-json|videos)\//;
   const fallback = links.find((href) => {
     try {
       const u = new URL(href);
