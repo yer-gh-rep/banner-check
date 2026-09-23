@@ -23,7 +23,7 @@
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -35,15 +35,25 @@
       },
       "article": {
         "desktop": {
-          "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.sg/137621/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
-          "ok": false
+          "file": "Singapore-article-desktop.png",
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            }
+          },
+          "ok": true
         },
         "mobile": {
           "file": "Singapore-article-mobile.png",
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -53,7 +63,7 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.sg/137621/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/"
+      "articleUrl": "https://fintechnews.sg/137604/ai/singapore-ai-lending-loan-comparison/"
     },
     "UAE": {
       "url": "https://fintechnews.ae",
@@ -77,7 +87,7 @@
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -107,7 +117,7 @@
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -205,7 +215,7 @@
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -217,15 +227,25 @@
       },
       "article": {
         "desktop": {
-          "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.my/60995/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
-          "ok": false
+          "file": "Malaysia-article-desktop.png",
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            }
+          },
+          "ok": true
         },
         "mobile": {
           "file": "Malaysia-article-mobile.png",
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -235,7 +255,7 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.my/60995/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/"
+      "articleUrl": "https://fintechnews.my/60983/financial-inclusion/mastercard-gxbank-financial-health-study/"
     },
     "Indonesia": {
       "url": "https://fintechnews.id",
@@ -259,7 +279,7 @@
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -289,7 +309,7 @@
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -299,7 +319,7 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.id/110754/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/"
+      "articleUrl": "https://fintechnews.id/110744/payments/indonesia-qris-expansion-four-countries/"
     },
     "Philippines": {
       "url": "https://fintechnews.ph",
@@ -323,7 +343,7 @@
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -335,15 +355,25 @@
       },
       "article": {
         "desktop": {
-          "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.ph/73661/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
-          "ok": false
+          "file": "Philippines-article-desktop.png",
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            }
+          },
+          "ok": true
         },
         "mobile": {
           "file": "Philippines-article-mobile.png",
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -353,7 +383,7 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.ph/73661/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/"
+      "articleUrl": "https://fintechnews.ph/73658/fintech/billease-bank-rebrands/"
     },
     "Baltic": {
       "url": "https://fintechbaltic.com",
@@ -505,7 +535,7 @@
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -517,15 +547,25 @@
       },
       "article": {
         "desktop": {
-          "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.au/123046/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
-          "ok": false
+          "file": "Australia-article-desktop.png",
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            }
+          },
+          "ok": true
         },
         "mobile": {
           "file": "Australia-article-mobile.png",
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -535,7 +575,7 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.au/123046/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/"
+      "articleUrl": "https://fintechnews.au/123005/payments/sokin-leadership-expansion-australia/"
     },
     "Hong Kong": {
       "url": "https://fintechnews.hk",
@@ -559,7 +599,7 @@
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -571,15 +611,25 @@
       },
       "article": {
         "desktop": {
-          "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://fintechnews.hk/40846/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/\", waiting until \"networkidle\"\n",
-          "ok": false
+          "file": "Hong Kong-article-desktop.png",
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            }
+          },
+          "ok": true
         },
         "mobile": {
           "file": "Hong Kong-article-mobile.png",
           "banners": {
             "top-banner": {
               "found": true,
-              "rendered": false
+              "rendered": true
             },
             "in-content-banner": {
               "found": true,
@@ -589,7 +639,7 @@
           "ok": true
         }
       },
-      "articleUrl": "https://fintechnews.hk/40846/videos/hong-leongs-new-card-is-forged-in-fire-and-you-cant-apply-for-it/"
+      "articleUrl": "https://fintechnews.hk/40820/fintechkorea/kakao-fireblocks-stablecoin-korea-mou/"
     },
     "Switzerland": {
       "url": "https://fintechnews.ch",
