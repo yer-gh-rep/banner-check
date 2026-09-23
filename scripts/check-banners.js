@@ -93,6 +93,11 @@ async function scrollThroughPage(page) {
   await page.waitForTimeout(1000); // settle after scrolling back to top
 }
 
+// Placements that count toward the "main" near-top mobile crop. The
+// in-article banner is deliberately excluded — it can sit far down mid-post
+// and gets its own dedicated close-up screenshot instead (see below).
+const PRIMARY_CROP_KEYS = ["top-banner", "in-content-banner"];
+
 /** Check each banner placement: present in DOM, visibly rendered, and where
  * it sits on the page. A selector can match multiple elements (e.g. a
  * desktop-only container and a mobile-only container for the same
@@ -100,7 +105,7 @@ async function scrollThroughPage(page) {
  * not just the first match in DOM order (which may be the hidden one). */
 async function checkBanners(page) {
   const results = {};
-  let maxBottom = 0;
+  let primaryMaxBottom = 0;
   for (const check of BANNER_CHECKS) {
     const handles = await page.$$(check.selector);
     if (handles.length === 0) {
@@ -112,12 +117,14 @@ async function checkBanners(page) {
       const box = await handle.boundingBox();
       if (box && box.width > 10 && box.height > 10) {
         rendered = true;
-        maxBottom = Math.max(maxBottom, box.y + box.height);
+        if (PRIMARY_CROP_KEYS.includes(check.key)) {
+          primaryMaxBottom = Math.max(primaryMaxBottom, box.y + box.height);
+        }
       }
     }
     results[check.key] = { found: true, rendered };
   }
-  return { results, maxBottom };
+  return { results, primaryMaxBottom };
 }
 
 async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewport, outDir) {
@@ -131,8 +138,9 @@ async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewpor
   // actually render before we check or screenshot them.
   await scrollThroughPage(page);
 
-  const { results, maxBottom } = await checkBanners(page);
+  const { results, primaryMaxBottom } = await checkBanners(page);
   const fileName = `${siteName}-${pageLabel}-${deviceKey}.png`;
+  let extraFiles = [];
 
   if (deviceKey === "desktop") {
     // Desktop: full page, uncropped — includes the sidebar so you can
@@ -143,30 +151,48 @@ async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewpor
       timeout: 60000,
     });
   } else {
-    // Mobile: crop to just past the lowest banner found. On the homepage
-    // that means stopping before "Recent News" (banners sit high up), so
-    // cap at 2 screens there. On article pages, in-article (Advanced Ads)
-    // placements can sit much further down mid-post — don't cap those,
-    // let it reach wherever the lowest found banner actually is.
+    // Mobile: crop to just past the top banner + in-content banner — the
+    // same formula and same 2-screen cap on every page, so the homepage
+    // and an article land in the same position. The in-article banner is
+    // NOT part of this crop (see below).
     const PADDING_BELOW = 200;
     const pageHeight = await page.evaluate(
       () => document.documentElement.scrollHeight
     );
-    const ceiling =
-      pageLabel === "home"
-        ? Math.min(viewport.height * 2, pageHeight)
-        : pageHeight;
-    const cropHeight = maxBottom
-      ? Math.min(maxBottom + PADDING_BELOW, ceiling)
-      : Math.min(viewport.height * 2, pageHeight); // no banner found at all — fall back to 2 screens
+    const ceiling = Math.min(viewport.height * 2, pageHeight);
+    const cropHeight = primaryMaxBottom
+      ? Math.min(primaryMaxBottom + PADDING_BELOW, ceiling)
+      : ceiling;
     await page.screenshot({
       path: path.join(outDir, fileName),
       clip: { x: 0, y: 0, width: viewport.width, height: cropHeight },
       timeout: 60000,
     });
+
+    // On mobile articles, also take a dedicated close-up of the in-article
+    // (Advanced Ads) banner itself, wherever it sits mid-post — separate
+    // from the near-top crop above, since it can be many screens further
+    // down. One image per placement found, in case an article has more
+    // than one "between paragraph" ad.
+    if (pageLabel === "article") {
+      const inArticleHandles = await page.$$(".fintech-entity-placement");
+      let n = 0;
+      for (const handle of inArticleHandles) {
+        const box = await handle.boundingBox();
+        if (box && box.width > 10 && box.height > 10) {
+          n++;
+          const extraFile = `${siteName}-${pageLabel}-${deviceKey}-in-article-${n}.png`;
+          await handle.screenshot({
+            path: path.join(outDir, extraFile),
+            timeout: 60000,
+          });
+          extraFiles.push(extraFile);
+        }
+      }
+    }
   }
 
-  return { file: fileName, banners: results, ok: true };
+  return { file: fileName, extraFiles, banners: results, ok: true };
 }
 
 async function shootPage(browser, siteName, pageLabel, url, outDir) {
