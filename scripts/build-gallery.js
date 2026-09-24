@@ -51,21 +51,37 @@ function compareBanners(desktopEntry, mobileEntry) {
   });
 }
 
+function captionFor(label) {
+  const map = {
+    "home desktop": "Homepage — Desktop (full page)",
+    "home mobile": "Homepage — Mobile (first screen)",
+    "article desktop": "Article — Desktop (full page)",
+    "article mobile": "Article — Mobile (first screen)",
+  };
+  return map[label] || label;
+}
+
 function renderDevice(entry, siteName, label) {
   if (!entry || !entry.ok) {
-    return `<div class="shot error"><p>❌ failed to capture</p></div>`;
+    return `<div class="shot error"><p class="shot-caption">${captionFor(label)}</p><p>❌ failed to capture</p></div>`;
   }
   const extras = (entry.extraFiles || [])
     .map(
-      (f, i) =>
-        `<img loading="lazy" class="in-article-crop" src="${f}" alt="${siteName} ${label} in-article banner ${i + 1}">`
+      (f, i) => `
+        <p class="shot-caption">Article — Mobile — In-article banner #${i + 1}</p>
+        <img loading="lazy" class="in-article-crop" src="${f}" alt="${siteName} ${label} in-article banner ${i + 1}">`
     )
     .join("");
   return `
     <div class="shot">
+      <p class="shot-caption">${captionFor(label)}</p>
       <img loading="lazy" src="${entry.file}" alt="${siteName} ${label}">
       ${extras}
     </div>`;
+}
+
+function slugify(name) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
 function main() {
@@ -77,6 +93,7 @@ function main() {
 
   let overallOk = true;
   let cards = "";
+  let tocItems = "";
   for (const [siteName, site] of Object.entries(report.sites)) {
     const homeDesktop = site.home?.desktop;
     const homeMobile = site.home?.mobile;
@@ -99,8 +116,11 @@ function main() {
         ? "✅"
         : "—";
 
+    const slug = slugify(siteName);
+    tocItems += `<li><a href="#${slug}">${overallSiteIcon} ${siteName}</a></li>`;
+
     cards += `
-      <section class="site">
+      <section class="site" id="${slug}">
         <h2>${overallSiteIcon} ${siteName} <a href="${site.url}" target="_blank">${site.url}</a></h2>
         <h3>Homepage</h3>
         <div class="banners">${homeComparisons.map((c) => c.html).join(" ")}</div>
@@ -136,6 +156,7 @@ function main() {
   .shot { flex: 1 1 380px; max-width: 460px; border: 1px solid #eee; border-radius: 6px; overflow: hidden; background: #fafafa; }
   .shot img { width: 100%; display: block; border-bottom: 1px solid #eee; }
   .shot img.in-article-crop { border-top: 2px dashed #ccc; }
+  .shot-caption { margin: 0; padding: 6px 10px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; color: #666; background: #f0f0f0; }
   .shot.error { padding: 40px 16px; text-align: center; color: #b00020; }
   .banners { padding: 4px 0 12px; font-size: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
   .chk { padding: 2px 6px; border-radius: 4px; background: #f0f0f0; }
@@ -144,12 +165,31 @@ function main() {
   .chk.ok { background: #e8f7ec; color: #1a7a3a; }
   .chk.unknown { background: #fff8e1; color: #8a6d00; }
   .index-link { margin-bottom: 20px; display: inline-block; }
+  .layout { display: flex; gap: 24px; align-items: flex-start; }
+  .toc { flex: 0 0 220px; position: sticky; top: 24px; background: #fff; border: 1px solid #e2e2e2; border-radius: 8px; padding: 12px 16px; max-height: calc(100vh - 48px); overflow-y: auto; }
+  .toc h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: #888; margin: 0 0 8px; }
+  .toc ul { list-style: none; margin: 0; padding: 0; }
+  .toc li { margin: 0 0 6px; }
+  .toc a { color: #1a1a1a; text-decoration: none; font-size: 13px; }
+  .toc a:hover { color: #4a6cf7; text-decoration: underline; }
+  .main { flex: 1 1 auto; min-width: 0; }
+  /* Sidebar ToC is desktop-only — hidden on narrow/mobile screens */
+  @media (max-width: 900px) {
+    .toc { display: none; }
+    .layout { display: block; }
+  }
 </style>
 </head>
 <body>
   <h1>Banner check — ${today}</h1>
   <p class="sub">Homepage + latest article, desktop &amp; mobile, across all ${Object.keys(report.sites).length} FNN sites.</p>
-  ${cards}
+  <div class="layout">
+    <nav class="toc">
+      <h2>Sites</h2>
+      <ul>${tocItems}</ul>
+    </nav>
+    <div class="main">${cards}</div>
+  </div>
 </body>
 </html>`;
 

@@ -93,19 +93,13 @@ async function scrollThroughPage(page) {
   await page.waitForTimeout(1000); // settle after scrolling back to top
 }
 
-// Placements that count toward the "main" near-top mobile crop. The
-// in-article banner is deliberately excluded — it can sit far down mid-post
-// and gets its own dedicated close-up screenshot instead (see below).
-const PRIMARY_CROP_KEYS = ["top-banner", "in-content-banner"];
-
-/** Check each banner placement: present in DOM, visibly rendered, and where
- * it sits on the page. A selector can match multiple elements (e.g. a
- * desktop-only container and a mobile-only container for the same
- * placement) — "rendered" means at least one of them actually has size,
- * not just the first match in DOM order (which may be the hidden one). */
+/** Check each banner placement: present in DOM, and visibly rendered. A
+ * selector can match multiple elements (e.g. a desktop-only container and
+ * a mobile-only container for the same placement) — "rendered" means at
+ * least one of them actually has size, not just the first match in DOM
+ * order (which may be the hidden one). */
 async function checkBanners(page) {
   const results = {};
-  let primaryMaxBottom = 0;
   for (const check of BANNER_CHECKS) {
     const handles = await page.$$(check.selector);
     if (handles.length === 0) {
@@ -117,14 +111,11 @@ async function checkBanners(page) {
       const box = await handle.boundingBox();
       if (box && box.width > 10 && box.height > 10) {
         rendered = true;
-        if (PRIMARY_CROP_KEYS.includes(check.key)) {
-          primaryMaxBottom = Math.max(primaryMaxBottom, box.y + box.height);
-        }
       }
     }
     results[check.key] = { found: true, rendered };
   }
-  return { results, primaryMaxBottom };
+  return results;
 }
 
 async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewport, outDir) {
@@ -138,7 +129,7 @@ async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewpor
   // actually render before we check or screenshot them.
   await scrollThroughPage(page);
 
-  const { results, primaryMaxBottom } = await checkBanners(page);
+  const results = await checkBanners(page);
   const fileName = `${siteName}-${pageLabel}-${deviceKey}.png`;
   let extraFiles = [];
 
@@ -151,21 +142,13 @@ async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewpor
       timeout: 60000,
     });
   } else {
-    // Mobile: crop to just past the top banner + in-content banner — the
-    // same formula and same 2-screen cap on every page, so the homepage
-    // and an article land in the same position. The in-article banner is
-    // NOT part of this crop (see below).
-    const PADDING_BELOW = 200;
-    const pageHeight = await page.evaluate(
-      () => document.documentElement.scrollHeight
-    );
-    const ceiling = Math.min(viewport.height * 2, pageHeight);
-    const cropHeight = primaryMaxBottom
-      ? Math.min(primaryMaxBottom + PADDING_BELOW, ceiling)
-      : ceiling;
+    // Mobile: just the first screen, viewport-only, no clip math. Simple
+    // and predictable — the top banner and in-content banner should both
+    // be visible within a normal first screen on this theme, and this
+    // avoids any timing-dependent bounding-box guesswork about where to
+    // cut off. Page is already scrolled back to top by scrollThroughPage.
     await page.screenshot({
       path: path.join(outDir, fileName),
-      clip: { x: 0, y: 0, width: viewport.width, height: cropHeight },
       timeout: 60000,
     });
 
