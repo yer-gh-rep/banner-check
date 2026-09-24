@@ -1,0 +1,1016 @@
+{
+  "date": "2026-09-24",
+  "sites": {
+    "Singapore": {
+      "url": "https://fintechnews.sg",
+      "home": {
+        "desktop": {
+          "file": "Singapore-home-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": true,
+              "rendered": true
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Singapore-home-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": true,
+              "rendered": true
+            }
+          },
+          "ok": true
+        }
+      },
+      "article": {
+        "desktop": {
+          "file": "Singapore-article-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": true,
+              "rendered": true
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Singapore-article-mobile.png",
+          "extraFiles": [
+            "Singapore-article-mobile-in-article-1.png",
+            "Singapore-article-mobile-in-article-2.png"
+          ],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": true,
+              "rendered": true
+            }
+          },
+          "ok": true
+        }
+      },
+      "articleUrl": "https://fintechnews.sg/137701/e-wallets/anthony-tan-alexander-hungate-grab-share-purchase/"
+    },
+    "UAE": {
+      "url": "https://fintechnews.ae",
+      "home": {
+        "desktop": {
+          "file": "UAE-home-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "UAE-home-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "article": {
+        "desktop": {
+          "file": "UAE-article-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "UAE-article-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "articleUrl": "https://fintechnews.ae/33581/saudi/saudi-arabia-emerges-as-one-of-fastest-growing-data-center-markets-in-the-world/"
+    },
+    "Africa": {
+      "url": "https://fintechnews.africa",
+      "home": {
+        "desktop": {
+          "file": "Africa-home-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Africa-home-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "article": {
+        "desktop": {
+          "file": "Africa-article-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Africa-article-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "articleUrl": "https://fintechnews.africa/46559/fintech-tanzania/fintech-map-tanzania-homegrown-pure-play-ventures-dominate-tanzanias-fintech-ecosystem/"
+    },
+    "Malaysia": {
+      "url": "https://fintechnews.my",
+      "home": {
+        "desktop": {
+          "file": "Malaysia-home-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Malaysia-home-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "article": {
+        "desktop": {
+          "file": "Malaysia-article-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Malaysia-article-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "articleUrl": "https://fintechnews.my/61009/regtech-fintech-regulation-malaysia/pidm-bank-resolution-readiness/"
+    },
+    "Indonesia": {
+      "url": "https://fintechnews.id",
+      "home": {
+        "desktop": {
+          "file": "Indonesia-home-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Indonesia-home-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "article": {
+        "desktop": {
+          "file": "Indonesia-article-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Indonesia-article-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "articleUrl": "https://fintechnews.id/110744/payments/indonesia-qris-expansion-four-countries/"
+    },
+    "Philippines": {
+      "url": "https://fintechnews.ph",
+      "home": {
+        "desktop": {
+          "file": "Philippines-home-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Philippines-home-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "article": {
+        "desktop": {
+          "file": "Philippines-article-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Philippines-article-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "articleUrl": "https://fintechnews.ph/73658/fintech/billease-bank-rebrands/"
+    },
+    "Baltic": {
+      "url": "https://fintechbaltic.com",
+      "home": {
+        "desktop": {
+          "file": "Baltic-home-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Baltic-home-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "article": {
+        "desktop": {
+          "file": "Baltic-article-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Baltic-article-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "articleUrl": "https://fintechbaltic.com/11862/fintechlatvia/leading-latvian-business-school-shifts-focus-to-fintech-digital-finance/"
+    },
+    "Nordics": {
+      "url": "https://fintechnordics.com",
+      "home": {
+        "desktop": {
+          "file": "Nordics-home-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Nordics-home-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "article": {
+        "desktop": {
+          "file": "Nordics-article-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Nordics-article-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "articleUrl": "https://fintechnordics.com/9490/fintechsweden/nordiska-finastra-swift-sweden-payments/"
+    },
+    "Australia": {
+      "url": "https://fintechnews.au",
+      "home": {
+        "desktop": {
+          "file": "Australia-home-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Australia-home-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "article": {
+        "desktop": {
+          "file": "Australia-article-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Australia-article-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "articleUrl": "https://fintechnews.au/123051/fintech/personal-finance-apps-australia-2026/"
+    },
+    "Hong Kong": {
+      "url": "https://fintechnews.hk",
+      "home": {
+        "desktop": {
+          "file": "Hong Kong-home-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Hong Kong-home-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "article": {
+        "desktop": {
+          "file": "Hong Kong-article-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Hong Kong-article-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-content-banner": {
+              "found": true,
+              "rendered": true
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "articleUrl": "https://fintechnews.hk/40862/ai/deutsche-bank-agentic-ai-kyc-hong-kong/"
+    },
+    "Switzerland": {
+      "url": "https://fintechnews.ch",
+      "home": {
+        "desktop": {
+          "file": "Switzerland-home-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Switzerland-home-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "article": {
+        "desktop": {
+          "file": "Switzerland-article-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Switzerland-article-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "articleUrl": "https://fintechnews.ch/blockchain_bitcoin/relai-funding-round-bitcoin-savings-valuation/85882/"
+    },
+    "Americas": {
+      "url": "https://fintechnews.am",
+      "home": {
+        "desktop": {
+          "file": "Americas-home-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Americas-home-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "article": {
+        "desktop": {
+          "file": "Americas-article-desktop.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        },
+        "mobile": {
+          "file": "Americas-article-mobile.png",
+          "extraFiles": [],
+          "banners": {
+            "top-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-content-banner": {
+              "found": false,
+              "rendered": false
+            },
+            "in-article-banner": {
+              "found": false,
+              "rendered": false
+            }
+          },
+          "ok": true
+        }
+      },
+      "articleUrl": "https://fintechnews.am/fintech-colombia/55662/revolut-colombia-banking-licence/"
+    }
+  }
+}
