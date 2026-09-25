@@ -132,7 +132,11 @@ async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewpor
   // before checking or screenshotting them.
   const skipScroll = deviceKey === "mobile" && pageLabel === "home";
   if (skipScroll) {
-    await page.waitForTimeout(1500); // give first-screen content a moment to settle instead
+    // No scrolling at all — but lazy-loaded banners still need time to
+    // fire (they typically trigger on initial layout even without a
+    // scroll, just not instantly), so wait longer here before capturing.
+    await page.waitForLoadState("load").catch(() => {});
+    await page.waitForTimeout(4000);
   } else {
     await scrollThroughPage(page);
   }
