@@ -144,11 +144,16 @@ async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewpor
     // fire (they typically trigger on initial layout even without a
     // scroll, just not instantly), so wait longer here before capturing.
     await page.waitForLoadState("load").catch(() => {});
-    await page.waitForTimeout(4000);
-    // Belt and braces: force back to the true top right before the shot,
-    // in case anything still nudged the scroll position.
+    await page.waitForTimeout(2500);
+
+    // Some ad scripts specifically listen for a real scroll EVENT to fire
+    // lazy loading, not just element visibility — so a tiny nudge (down a
+    // few px, then straight back to 0) can trigger them without this
+    // being a visible "scroll down" in the final screenshot.
+    await page.evaluate(() => window.scrollTo(0, 50));
+    await page.waitForTimeout(300);
     await page.evaluate(() => window.scrollTo(0, 0));
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(2000);
   } else {
     await scrollThroughPage(page);
   }
