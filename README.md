@@ -54,17 +54,38 @@ Node, Playwright, or a terminal on their own machine.
 |---|---|
 | Top banner (above header) | `.ad-banner-a`, `.ad-banner-a-mobile` |
 | In-content banner (above Recent News / above article featured image) | `.ad-banner` |
+| In-article banner (Advanced Ads, between paragraphs — articles only) | `.fintech-entity-placement` |
 
 **Desktop** screenshots are full page, uncropped — this includes the
 sidebar as-is, since that's where webinar signups, report downloads, etc.
 live, and you already know which Google Ad Manager slots should or
 shouldn't appear there, so there's no separate automated check for those.
 
-**Mobile** screenshots are capped at two screen heights (viewport height ×
-2), so the banners stay near the top of the image instead of the crop
-landing further down than expected. The page is still scrolled through
-fully first so any lazy-loaded in-content banner gets a chance to render
-before the screenshot is taken.
+**Mobile** screenshots are just the first screen (viewport-only) — the same
+on every page. On the homepage specifically, this is captured with no
+scrolling at all: the page loads, settles briefly, and is screenshotted
+exactly as it first appears. Everywhere else (article pages), the page is
+scrolled through fully first (then back to the top) so lazy-loaded
+top/in-content banners have already rendered by the time the first-screen
+shot is taken. The in-article (Advanced Ads) placement won't be in this
+first-screen shot since it sits further down mid-post; instead, on article
+pages, it gets its own dedicated close-up screenshot(s) — one per placement
+found — shown right below the main screenshot, each labeled.
+
+## Reading the ✅ / ❌ / — icons
+
+Each banner placement is checked separately on **desktop** and **mobile**
+(each in its own real browser at that exact screen size), then compared:
+
+- **✅ green** — showing correctly on both desktop and mobile.
+- **❌ red** — a real mismatch: showing on one device but missing on the
+  other. This is the one worth investigating.
+- **— grey** — not present on either device. This isn't an error, it just
+  means that placement isn't configured for that page (e.g. many sites
+  don't use every banner slot on every page) — so it's not flagged red.
+- **❔ yellow** — the screenshot capture itself failed for that page, so
+  banner status is unknown rather than a "not configured" — check
+  `report.json` for the actual error.
 
 These were found by inspecting fintechnews.sg's live markup. All 12 sites
 share the same WordPress theme, so they should mostly match — but if a
