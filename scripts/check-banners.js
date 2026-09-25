@@ -124,10 +124,34 @@ async function captureOnePage(page, siteName, pageLabel, url, deviceKey, viewpor
   // "Videos" category post. Wait for the DOM instead, then give assets a
   // fixed window to settle.
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
+
+  // Disable scroll anchoring: without this, Chrome silently shifts the
+  // scroll position on its own whenever a banner image above the fold
+  // finishes loading and changes size — even with zero scroll calls from
+  // us. That's what was pulling the "no scroll" homepage screenshot down
+  // past the banners into the article feed once the ads finished loading.
+  await page.addStyleTag({ content: "* { overflow-anchor: none !important; }" });
+
   await page.waitForTimeout(3000);
-  // Scroll through the page so lazy-loaded sidebar/in-content ad slots
-  // actually render before we check or screenshot them.
-  await scrollThroughPage(page);
+
+  // Mobile homepage: capture exactly the first screen as it loads, with no
+  // scrolling at all. Everywhere else, scroll through the page first so
+  // lazy-loaded sidebar/in-content/in-article ad slots actually render
+  // before checking or screenshotting them.
+  const skipScroll = deviceKey === "mobile" && pageLabel === "home";
+  if (skipScroll) {
+    // No scrolling at all — but lazy-loaded banners still need time to
+    // fire (they typically trigger on initial layout even without a
+    // scroll, just not instantly), so wait longer here before capturing.
+    await page.waitForLoadState("load").catch(() => {});
+    await page.waitForTimeout(4000);
+    // Belt and braces: force back to the true top right before the shot,
+    // in case anything still nudged the scroll position.
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(200);
+  } else {
+    await scrollThroughPage(page);
+  }
 
   const results = await checkBanners(page);
   const fileName = `${siteName}-${pageLabel}-${deviceKey}.png`;
