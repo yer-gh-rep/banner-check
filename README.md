@@ -62,15 +62,21 @@ live, and you already know which Google Ad Manager slots should or
 shouldn't appear there, so there's no separate automated check for those.
 
 **Mobile** screenshots are just the first screen (viewport-only) — the same
-on every page. On the homepage specifically, this is captured with no
-scrolling at all: the page loads, settles briefly, and is screenshotted
-exactly as it first appears. Everywhere else (article pages), the page is
-scrolled through fully first (then back to the top) so lazy-loaded
-top/in-content banners have already rendered by the time the first-screen
-shot is taken. The in-article (Advanced Ads) placement won't be in this
-first-screen shot since it sits further down mid-post; instead, on article
-pages, it gets its own dedicated close-up screenshot(s) — one per placement
-found — shown right below the main screenshot, each labeled.
+on every page. On the homepage specifically, this stays visually at the
+top with no visible scrolling: scroll anchoring is disabled (otherwise
+Chrome silently shifts the scroll position once a banner image above the
+fold finishes loading), the page loads and settles briefly, then gets a
+tiny scroll nudge (down a few px and straight back to the top) since some
+ad scripts specifically listen for a scroll *event* — not just visibility
+— to fire lazy loading. It's then forced back to the true top and
+screenshotted exactly as it appears. Everywhere else (article pages), the
+page is scrolled through fully first (then back to the top) so
+lazy-loaded top/in-content banners have already rendered by the time the
+first-screen shot is taken. The in-article (Advanced Ads) placement won't
+be in this first-screen shot since it sits further down mid-post; instead,
+on article pages, it gets its own dedicated close-up screenshot(s) — one
+per placement found — shown right below the main screenshot, each
+labeled.
 
 ## Reading the ✅ / ❌ / — icons
 
@@ -125,3 +131,25 @@ artifact download rather than a public Pages site).
 - `scripts/build-gallery.js` — builds the HTML gallery + prunes old runs
 - `scripts/notify-chat.js` — posts the summary to Google Chat
 - `.github/workflows/banner-check.yml` — the schedule + manual trigger
+
+## Jotform mobile check (weekly)
+
+A second, separate workflow (`.github/workflows/jotform-check.yml`) runs every
+Monday at 09:30 Singapore time (or on demand via Actions → Jotform Mobile
+Check → Run workflow). For each page in `scripts/jotform-pages.js` it opens the
+page in a mobile browser (iPhone 13 UA, 390px wide), scrolls through it, then
+waits for the Jotform iframe and gives the form an extra 8 seconds to render.
+It then checks that:
+
+- the Jotform iframe exists and is a sensible size,
+- real fields (inputs / dropdowns) are visible inside the iframe,
+- the form fits the mobile screen and the page has no sideways scroll.
+
+It saves a close-up of the form plus a full-page mobile screenshot, publishes a
+small gallery to `.../jotform-checks/<date>/`, and posts a ✅/⚠️ summary to the
+same Google Chat webhook (`GCHAT_WEBHOOK_URL` secret) as the banner check.
+
+To add a page, add a line to `JOTFORM_PAGES` in `scripts/jotform-pages.js`.
+The wait times and thresholds are in the same file.
+
+Local test: `npm run jotform:check` (output in `jotform-checks/<today>/`).

@@ -7,7 +7,10 @@
   "scripts": {
     "check": "node scripts/check-banners.js",
     "gallery": "node scripts/build-gallery.js",
-    "notify": "node scripts/notify-chat.js"
+    "notify": "node scripts/notify-chat.js",
+    "jotform:check": "node scripts/check-jotforms.js",
+    "jotform:prune": "node scripts/prune-jotforms.js",
+    "jotform:notify": "node scripts/notify-jotforms.js"
   },
   "dependencies": {
     "playwright": "^1.47.0"
