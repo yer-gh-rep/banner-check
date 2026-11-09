@@ -145,7 +145,7 @@ It then checks that:
 - real fields (inputs / dropdowns) are visible inside the iframe,
 - the form fits the mobile screen and the page has no sideways scroll.
 
-It saves a close-up of the form plus a full-page mobile screenshot, publishes a
+It saves a full-page mobile screenshot (showing the form in context), publishes a
 small gallery to `.../jotform-checks/<date>/`, and posts a ✅/⚠️ summary to the
 same Google Chat webhook (`GCHAT_WEBHOOK_URL` secret) as the banner check.
 

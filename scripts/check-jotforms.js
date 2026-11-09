@@ -114,7 +114,7 @@ async function inspectForm(page) {
 
 async function checkPage(browser, target) {
   const fileBase = slug(target.name);
-  const out = { name: target.name, url: target.url, ok: false, fullFile: null, formFile: null, form: null, error: null };
+  const out = { name: target.name, url: target.url, ok: false, fullFile: null, form: null, error: null };
 
   for (let attempt = 1; attempt <= 2 && !out.ok; attempt++) {
     const context = await browser.newContext({
@@ -130,14 +130,6 @@ async function checkPage(browser, target) {
       await scrollThroughPage(page);
 
       out.form = await inspectForm(page);
-
-      // Form close-up (viewport screenshot centred on the form)
-      if (out.form.embedFound) {
-        out.formFile = `${fileBase}-form.png`;
-        await formElement(page, out.form.embed).screenshot({ path: path.join(OUT_DIR, out.formFile), timeout: 60000 }).catch(() => {
-          out.formFile = null;
-        });
-      }
 
       // Whole page, mobile. Playwright's fullPage mode leaves the Jotform
       // iframe blank (it doesn't repaint while the window is resized for the
@@ -196,7 +188,6 @@ async function main() {
   <p><a href="${esc(p.url)}">${esc(p.url)}</a></p>
   ${p.problems.length ? `<ul class="bad">${p.problems.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : "<p class=\"good\">Form displayed correctly on mobile.</p>"}
   <div class="row">
-    ${p.formFile ? `<figure><img src="${esc(p.formFile)}"><figcaption>Form</figcaption></figure>` : ""}
     ${p.fullFile ? `<figure><img src="${esc(p.fullFile)}"><figcaption>Full page (mobile)</figcaption></figure>` : ""}
   </div>
 </section>`
