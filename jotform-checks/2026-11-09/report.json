@@ -6,7 +6,6 @@
       "url": "https://fintechnews.au/australia-fintech-map-2026/",
       "ok": true,
       "fullFile": "australia-fintech-map-2026-full.png",
-      "formFile": "australia-fintech-map-2026-form.png",
       "form": {
         "embed": "iframe",
         "embedFound": true,
@@ -31,7 +30,6 @@
       "url": "https://fintechnews.my/malaysia-fintech-report-2026/",
       "ok": true,
       "fullFile": "malaysia-fintech-report-2026-full.png",
-      "formFile": "malaysia-fintech-report-2026-form.png",
       "form": {
         "embed": "iframe",
         "embedFound": true,
@@ -56,7 +54,6 @@
       "url": "https://fintechnews.sg/singapore-digital-banking-report-2026/",
       "ok": true,
       "fullFile": "singapore-digital-banking-report-2026-full.png",
-      "formFile": "singapore-digital-banking-report-2026-form.png",
       "form": {
         "embed": "iframe",
         "embedFound": true,
@@ -81,7 +78,6 @@
       "url": "https://fintechnews.ph/fintech-philippines-report-2026/",
       "ok": true,
       "fullFile": "philippines-fintech-report-2026-full.png",
-      "formFile": "philippines-fintech-report-2026-form.png",
       "form": {
         "embed": "iframe",
         "embedFound": true,
@@ -106,7 +102,6 @@
       "url": "https://fintechnews.sg/fintech-singapore-report-2025/",
       "ok": true,
       "fullFile": "singapore-fintech-report-2025-full.png",
-      "formFile": "singapore-fintech-report-2025-form.png",
       "form": {
         "embed": "iframe",
         "embedFound": true,
@@ -131,7 +126,6 @@
       "url": "https://fintechnews.my/malaysia-fintech-report-2025/",
       "ok": true,
       "fullFile": "malaysia-fintech-report-2025-full.png",
-      "formFile": "malaysia-fintech-report-2025-form.png",
       "form": {
         "embed": "iframe",
         "embedFound": true,
@@ -156,7 +150,6 @@
       "url": "https://fintechnews.hk/hong-kong-fintech-report-2025-download/",
       "ok": true,
       "fullFile": "hong-kong-fintech-report-2025-full.png",
-      "formFile": "hong-kong-fintech-report-2025-form.png",
       "form": {
         "embed": "iframe",
         "embedFound": true,
@@ -181,7 +174,6 @@
       "url": "https://fintechnews.id/fintech-indonesia-report-2025/",
       "ok": true,
       "fullFile": "indonesia-fintech-report-2025-full.png",
-      "formFile": "indonesia-fintech-report-2025-form.png",
       "form": {
         "embed": "iframe",
         "embedFound": true,
@@ -206,9 +198,8 @@
       "url": "https://fintechnews.sg/fintech-singapore-report-2024/",
       "ok": true,
       "fullFile": "singapore-fintech-report-2024-full.png",
-      "formFile": "singapore-fintech-report-2024-form.png",
       "form": {
-        "embed": "inline",
+        "embed": "iframe",
         "embedFound": true,
         "formRendered": true,
         "visibleFields": 9,
@@ -216,9 +207,9 @@
         "pageOverflowX": false,
         "box": {
           "x": 20,
-          "y": -558,
+          "y": -539,
           "width": 350,
-          "height": 1961
+          "height": 1923
         },
         "problems": []
       },
@@ -231,7 +222,6 @@
       "url": "https://fintechnews.my/malaysia-fintech-report-2024-download/",
       "ok": true,
       "fullFile": "malaysia-fintech-report-2024-full.png",
-      "formFile": "malaysia-fintech-report-2024-form.png",
       "form": {
         "embed": "iframe",
         "embedFound": true,
@@ -256,7 +246,6 @@
       "url": "https://fintechnews.ph/fintech-philippines-report-2024/",
       "ok": true,
       "fullFile": "philippines-fintech-report-2024-full.png",
-      "formFile": "philippines-fintech-report-2024-form.png",
       "form": {
         "embed": "iframe",
         "embedFound": true,
@@ -281,7 +270,6 @@
       "url": "https://fintechnews.ae/uae-fintech-report-2024-download/",
       "ok": true,
       "fullFile": "uae-fintech-report-2024-full.png",
-      "formFile": "uae-fintech-report-2024-form.png",
       "form": {
         "embed": "iframe",
         "embedFound": true,
@@ -306,7 +294,6 @@
       "url": "https://fintechnews.sg/fintech-singapore-report-2023/",
       "ok": true,
       "fullFile": "singapore-fintech-report-2023-full.png",
-      "formFile": "singapore-fintech-report-2023-form.png",
       "form": {
         "embed": "inline",
         "embedFound": true,
@@ -331,7 +318,6 @@
       "url": "https://fintechnews.my/malaysia-fintech-report-2023/",
       "ok": true,
       "fullFile": "malaysia-fintech-report-2023-full.png",
-      "formFile": "malaysia-fintech-report-2023-form.png",
       "form": {
         "embed": "iframe",
         "embedFound": true,
@@ -356,7 +342,6 @@
       "url": "https://fintechnews.ph/fintech-philippines-report-2023-2/",
       "ok": true,
       "fullFile": "philippines-fintech-report-2023-full.png",
-      "formFile": "philippines-fintech-report-2023-form.png",
       "form": {
         "embed": "iframe",
         "embedFound": true,
