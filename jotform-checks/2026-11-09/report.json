@@ -19,6 +19,9 @@
           "width": 350,
           "height": 990
         },
+        "submitVisible": true,
+        "frameContentHeight": 1006,
+        "frameHeight": 990,
         "problems": []
       },
       "error": null,
@@ -43,6 +46,9 @@
           "width": 350,
           "height": 1225
         },
+        "submitVisible": true,
+        "frameContentHeight": 1241,
+        "frameHeight": 1225,
         "problems": []
       },
       "error": null,
@@ -67,6 +73,9 @@
           "width": 370,
           "height": 1142
         },
+        "submitVisible": true,
+        "frameContentHeight": 1158,
+        "frameHeight": 1142,
         "problems": []
       },
       "error": null,
@@ -91,6 +100,9 @@
           "width": 350,
           "height": 1293
         },
+        "submitVisible": true,
+        "frameContentHeight": 1309,
+        "frameHeight": 1293,
         "problems": []
       },
       "error": null,
@@ -115,6 +127,9 @@
           "width": 350,
           "height": 1142
         },
+        "submitVisible": true,
+        "frameContentHeight": 1158,
+        "frameHeight": 1142,
         "problems": []
       },
       "error": null,
@@ -139,6 +154,9 @@
           "width": 350,
           "height": 1810
         },
+        "submitVisible": true,
+        "frameContentHeight": 1826,
+        "frameHeight": 1810,
         "problems": []
       },
       "error": null,
@@ -163,6 +181,9 @@
           "width": 350,
           "height": 1539
         },
+        "submitVisible": true,
+        "frameContentHeight": 1539,
+        "frameHeight": 1539,
         "problems": []
       },
       "error": null,
@@ -187,6 +208,9 @@
           "width": 350,
           "height": 2000
         },
+        "submitVisible": true,
+        "frameContentHeight": 2000,
+        "frameHeight": 2000,
         "problems": []
       },
       "error": null,
@@ -211,6 +235,9 @@
           "width": 350,
           "height": 1923
         },
+        "submitVisible": true,
+        "frameContentHeight": 1939,
+        "frameHeight": 1923,
         "problems": []
       },
       "error": null,
@@ -235,6 +262,9 @@
           "width": 350,
           "height": 1830
         },
+        "submitVisible": true,
+        "frameContentHeight": 1838,
+        "frameHeight": 1830,
         "problems": []
       },
       "error": null,
@@ -259,6 +289,9 @@
           "width": 350,
           "height": 1879
         },
+        "submitVisible": true,
+        "frameContentHeight": 1895,
+        "frameHeight": 1879,
         "problems": []
       },
       "error": null,
@@ -283,6 +316,9 @@
           "width": 350,
           "height": 1700
         },
+        "submitVisible": true,
+        "frameContentHeight": 1700,
+        "frameHeight": 1700,
         "problems": []
       },
       "error": null,
@@ -307,6 +343,9 @@
           "width": 350,
           "height": 1703
         },
+        "submitVisible": true,
+        "frameContentHeight": null,
+        "frameHeight": null,
         "problems": []
       },
       "error": null,
@@ -331,6 +370,9 @@
           "width": 310,
           "height": 1857
         },
+        "submitVisible": true,
+        "frameContentHeight": 1873,
+        "frameHeight": 1857,
         "problems": []
       },
       "error": null,
@@ -355,6 +397,9 @@
           "width": 370,
           "height": 1768
         },
+        "submitVisible": true,
+        "frameContentHeight": 1784,
+        "frameHeight": 1768,
         "problems": []
       },
       "error": null,
