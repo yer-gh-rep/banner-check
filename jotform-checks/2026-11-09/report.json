@@ -1,0 +1,364 @@
+{
+  "date": "2026-11-09",
+  "pages": [
+    {
+      "name": "Australia Fintech Map 2026",
+      "url": "https://fintechnews.au/australia-fintech-map-2026/",
+      "ok": true,
+      "fullFile": "australia-fintech-map-2026-full.png",
+      "formFile": "australia-fintech-map-2026-form.png",
+      "form": {
+        "iframeFound": true,
+        "formRendered": true,
+        "visibleFields": 7,
+        "fitsViewport": true,
+        "pageOverflowX": false,
+        "iframeBox": {
+          "x": 20,
+          "y": -73,
+          "width": 350,
+          "height": 990
+        },
+        "problems": []
+      },
+      "error": null,
+      "status": "ok",
+      "problems": []
+    },
+    {
+      "name": "Malaysia Fintech Report 2026",
+      "url": "https://fintechnews.my/malaysia-fintech-report-2026/",
+      "ok": true,
+      "fullFile": "malaysia-fintech-report-2026-full.png",
+      "formFile": "malaysia-fintech-report-2026-form.png",
+      "form": {
+        "iframeFound": true,
+        "formRendered": true,
+        "visibleFields": 10,
+        "fitsViewport": true,
+        "pageOverflowX": false,
+        "iframeBox": {
+          "x": 20,
+          "y": -191,
+          "width": 350,
+          "height": 1225
+        },
+        "problems": []
+      },
+      "error": null,
+      "status": "ok",
+      "problems": []
+    },
+    {
+      "name": "Singapore Digital Banking Report 2026",
+      "url": "https://fintechnews.sg/singapore-digital-banking-report-2026/",
+      "ok": true,
+      "fullFile": "singapore-digital-banking-report-2026-full.png",
+      "formFile": "singapore-digital-banking-report-2026-form.png",
+      "form": {
+        "iframeFound": true,
+        "formRendered": true,
+        "visibleFields": 9,
+        "fitsViewport": true,
+        "pageOverflowX": false,
+        "iframeBox": {
+          "x": 10,
+          "y": -149,
+          "width": 370,
+          "height": 1142
+        },
+        "problems": []
+      },
+      "error": null,
+      "status": "ok",
+      "problems": []
+    },
+    {
+      "name": "Philippines Fintech Report 2026",
+      "url": "https://fintechnews.ph/fintech-philippines-report-2026/",
+      "ok": true,
+      "fullFile": "philippines-fintech-report-2026-full.png",
+      "formFile": "philippines-fintech-report-2026-form.png",
+      "form": {
+        "iframeFound": true,
+        "formRendered": true,
+        "visibleFields": 10,
+        "fitsViewport": true,
+        "pageOverflowX": false,
+        "iframeBox": {
+          "x": 20,
+          "y": -225,
+          "width": 350,
+          "height": 1293
+        },
+        "problems": []
+      },
+      "error": null,
+      "status": "ok",
+      "problems": []
+    },
+    {
+      "name": "Singapore Fintech Report 2025",
+      "url": "https://fintechnews.sg/fintech-singapore-report-2025/",
+      "ok": true,
+      "fullFile": "singapore-fintech-report-2025-full.png",
+      "formFile": "singapore-fintech-report-2025-form.png",
+      "form": {
+        "iframeFound": true,
+        "formRendered": true,
+        "visibleFields": 10,
+        "fitsViewport": true,
+        "pageOverflowX": false,
+        "iframeBox": {
+          "x": 20,
+          "y": -578,
+          "width": 350,
+          "height": 2000
+        },
+        "problems": []
+      },
+      "error": null,
+      "status": "ok",
+      "problems": []
+    },
+    {
+      "name": "Malaysia Fintech Report 2025",
+      "url": "https://fintechnews.my/malaysia-fintech-report-2025/",
+      "ok": true,
+      "fullFile": "malaysia-fintech-report-2025-full.png",
+      "formFile": "malaysia-fintech-report-2025-form.png",
+      "form": {
+        "iframeFound": true,
+        "formRendered": true,
+        "visibleFields": 10,
+        "fitsViewport": true,
+        "pageOverflowX": false,
+        "iframeBox": {
+          "x": 20,
+          "y": -483,
+          "width": 350,
+          "height": 1810
+        },
+        "problems": []
+      },
+      "error": null,
+      "status": "ok",
+      "problems": []
+    },
+    {
+      "name": "Hong Kong Fintech Report 2025",
+      "url": "https://fintechnews.hk/hong-kong-fintech-report-2025-download/",
+      "ok": true,
+      "fullFile": "hong-kong-fintech-report-2025-full.png",
+      "formFile": "hong-kong-fintech-report-2025-form.png",
+      "form": {
+        "iframeFound": true,
+        "formRendered": true,
+        "visibleFields": 9,
+        "fitsViewport": true,
+        "pageOverflowX": false,
+        "iframeBox": {
+          "x": 20,
+          "y": -348,
+          "width": 350,
+          "height": 1539
+        },
+        "problems": []
+      },
+      "error": null,
+      "status": "ok",
+      "problems": []
+    },
+    {
+      "name": "Indonesia Fintech Report 2025",
+      "url": "https://fintechnews.id/fintech-indonesia-report-2025/",
+      "ok": true,
+      "fullFile": "indonesia-fintech-report-2025-full.png",
+      "formFile": "indonesia-fintech-report-2025-form.png",
+      "form": {
+        "iframeFound": true,
+        "formRendered": true,
+        "visibleFields": 10,
+        "fitsViewport": true,
+        "pageOverflowX": false,
+        "iframeBox": {
+          "x": 20,
+          "y": -578,
+          "width": 350,
+          "height": 2000
+        },
+        "problems": []
+      },
+      "error": null,
+      "status": "ok",
+      "problems": []
+    },
+    {
+      "name": "Singapore Fintech Report 2024",
+      "url": "https://fintechnews.sg/fintech-singapore-report-2024/",
+      "ok": true,
+      "fullFile": "singapore-fintech-report-2024-full.png",
+      "formFile": null,
+      "form": {
+        "iframeFound": false,
+        "formRendered": false,
+        "visibleFields": 0,
+        "fitsViewport": null,
+        "pageOverflowX": false,
+        "iframeBox": null,
+        "problems": [
+          "Jotform iframe never appeared on the page"
+        ]
+      },
+      "error": null,
+      "status": "problem",
+      "problems": [
+        "Jotform iframe never appeared on the page"
+      ]
+    },
+    {
+      "name": "Malaysia Fintech Report 2024",
+      "url": "https://fintechnews.my/malaysia-fintech-report-2024-download/",
+      "ok": true,
+      "fullFile": "malaysia-fintech-report-2024-full.png",
+      "formFile": "malaysia-fintech-report-2024-form.png",
+      "form": {
+        "iframeFound": true,
+        "formRendered": true,
+        "visibleFields": 9,
+        "fitsViewport": true,
+        "pageOverflowX": false,
+        "iframeBox": {
+          "x": 20,
+          "y": -493,
+          "width": 350,
+          "height": 1830
+        },
+        "problems": []
+      },
+      "error": null,
+      "status": "ok",
+      "problems": []
+    },
+    {
+      "name": "Philippines Fintech Report 2024",
+      "url": "https://fintechnews.ph/fintech-philippines-report-2024/",
+      "ok": true,
+      "fullFile": "philippines-fintech-report-2024-full.png",
+      "formFile": "philippines-fintech-report-2024-form.png",
+      "form": {
+        "iframeFound": true,
+        "formRendered": true,
+        "visibleFields": 10,
+        "fitsViewport": true,
+        "pageOverflowX": false,
+        "iframeBox": {
+          "x": 20,
+          "y": -518,
+          "width": 350,
+          "height": 1879
+        },
+        "problems": []
+      },
+      "error": null,
+      "status": "ok",
+      "problems": []
+    },
+    {
+      "name": "UAE Fintech Report 2024",
+      "url": "https://fintechnews.ae/uae-fintech-report-2024-download/",
+      "ok": true,
+      "fullFile": "uae-fintech-report-2024-full.png",
+      "formFile": "uae-fintech-report-2024-form.png",
+      "form": {
+        "iframeFound": true,
+        "formRendered": true,
+        "visibleFields": 8,
+        "fitsViewport": true,
+        "pageOverflowX": false,
+        "iframeBox": {
+          "x": 20,
+          "y": -428,
+          "width": 350,
+          "height": 1700
+        },
+        "problems": []
+      },
+      "error": null,
+      "status": "ok",
+      "problems": []
+    },
+    {
+      "name": "Singapore Fintech Report 2023",
+      "url": "https://fintechnews.sg/fintech-singapore-report-2023/",
+      "ok": true,
+      "fullFile": "singapore-fintech-report-2023-full.png",
+      "formFile": null,
+      "form": {
+        "iframeFound": false,
+        "formRendered": false,
+        "visibleFields": 0,
+        "fitsViewport": null,
+        "pageOverflowX": false,
+        "iframeBox": null,
+        "problems": [
+          "Jotform iframe never appeared on the page"
+        ]
+      },
+      "error": null,
+      "status": "problem",
+      "problems": [
+        "Jotform iframe never appeared on the page"
+      ]
+    },
+    {
+      "name": "Malaysia Fintech Report 2023",
+      "url": "https://fintechnews.my/malaysia-fintech-report-2023/",
+      "ok": true,
+      "fullFile": "malaysia-fintech-report-2023-full.png",
+      "formFile": "malaysia-fintech-report-2023-form.png",
+      "form": {
+        "iframeFound": true,
+        "formRendered": true,
+        "visibleFields": 8,
+        "fitsViewport": true,
+        "pageOverflowX": false,
+        "iframeBox": {
+          "x": 40,
+          "y": -507,
+          "width": 310,
+          "height": 1857
+        },
+        "problems": []
+      },
+      "error": null,
+      "status": "ok",
+      "problems": []
+    },
+    {
+      "name": "Philippines Fintech Report 2023",
+      "url": "https://fintechnews.ph/fintech-philippines-report-2023-2/",
+      "ok": true,
+      "fullFile": "philippines-fintech-report-2023-full.png",
+      "formFile": "philippines-fintech-report-2023-form.png",
+      "form": {
+        "iframeFound": true,
+        "formRendered": true,
+        "visibleFields": 9,
+        "fitsViewport": true,
+        "pageOverflowX": false,
+        "iframeBox": {
+          "x": 10,
+          "y": -462,
+          "width": 370,
+          "height": 1768
+        },
+        "problems": []
+      },
+      "error": null,
+      "status": "ok",
+      "problems": []
+    }
+  ],
+  "overallOk": false
+}
