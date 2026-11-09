@@ -16,16 +16,20 @@ if (!webhookUrl) {
 const base = pagesBaseUrl ? pagesBaseUrl.replace(/\/$/, "").replace(/\/banner-checks$/, "") : null;
 const galleryUrl = base ? `${base}/jotform-checks/${today}/index.html` : null;
 
-const lines = report.pages.map((p) =>
-  p.status === "ok"
-    ? `✅ ${p.name}: form displayed correctly`
-    : `⚠️ ${p.name}: ${p.problems.join("; ")}`
-);
+const total = report.pages.length;
+const bad = report.pages.filter((p) => p.status !== "ok");
 
-const text =
-  `${report.overallOk ? "✅" : "⚠️"} Jotform mobile check ${today}\n` +
-  lines.join("\n") +
-  (galleryUrl ? `\n${galleryUrl}` : "");
+// Only report problems. If everything is fine, say so in one line.
+let text;
+if (bad.length === 0) {
+  text = `✅ Jotform mobile check ${today}: all ${total} forms are displayed correctly on mobile.`;
+} else {
+  const lines = bad.map((p) => `⚠️ ${p.name}: ${p.problems.join("; ")}\n${p.url}`);
+  text =
+    `⚠️ Jotform mobile check ${today}: ${bad.length} of ${total} forms have problems\n\n` +
+    lines.join("\n\n");
+}
+if (galleryUrl) text += `\n\nScreenshots: ${galleryUrl}`;
 
 const res = await fetch(webhookUrl, {
   method: "POST",

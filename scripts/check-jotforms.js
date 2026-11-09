@@ -34,6 +34,8 @@ async function scrollThroughPage(page) {
 const IFRAME_SEL = 'iframe[id^="JotFormIFrame"], iframe[src*="jotform.com"]';
 const INLINE_SEL = "form.jotform-form";
 const FIELDS = "input:visible, textarea:visible, select:visible";
+const FRAME_CLIP_TOLERANCE_PX = 40;
+const SUBMIT = 'button[type="submit"], input[type="submit"], .form-submit-button';
 
 /** The element that holds the form: the Jotform iframe, or the inline form. */
 function formElement(page, embed) {
@@ -54,6 +56,9 @@ async function inspectForm(page) {
     fitsViewport: null,
     pageOverflowX: false,
     box: null,
+    submitVisible: null,
+    frameContentHeight: null,
+    frameHeight: null,
     problems: [],
   };
 
@@ -102,6 +107,58 @@ async function inspectForm(page) {
   if (box) {
     result.fitsViewport = box.x >= -1 && box.x + box.width <= MOBILE_VIEWPORT.width + 1;
     if (!result.fitsViewport) result.problems.push("Form is wider than the mobile screen");
+  }
+
+  // Is the WHOLE form visible, down to the submit button? A form can render
+  // fine but be cut off (iframe shorter than its content, or a wrapper that
+  // hides the bottom), leaving the submit button out of reach.
+  if (result.formRendered) {
+    if (result.embed === "iframe") {
+      const dims = await page
+        .frameLocator(IFRAME_SEL)
+        .first()
+        .locator("html")
+        .evaluate(() => ({ sh: document.documentElement.scrollHeight, ih: window.innerHeight }))
+        .catch(() => null);
+      if (dims) {
+        result.frameContentHeight = dims.sh;
+        result.frameHeight = dims.ih;
+        // Jotform frames normally overshoot by ~16px of padding; only flag a real clip.
+        if (dims.sh > dims.ih + FRAME_CLIP_TOLERANCE_PX) {
+          result.problems.push(`Form is cut off: it is ${dims.sh}px tall but the frame shows only ${dims.ih}px`);
+        }
+      }
+    }
+
+    const scope = result.embed === "iframe" ? page.frameLocator(IFRAME_SEL).first() : page.locator(INLINE_SEL).first();
+    const submit = scope.locator(SUBMIT).first();
+    if ((await submit.count().catch(() => 0)) === 0) {
+      result.submitVisible = false;
+      result.problems.push("Submit button not found in the form");
+    } else {
+      // Bring the button to the middle of the screen, then check that it is
+      // really what a visitor would see and tap at that spot.
+      await submit.evaluate((e) => e.scrollIntoView({ block: "center" })).catch(() => {});
+      await page.waitForTimeout(800);
+      const sb = await submit.boundingBox().catch(() => null);
+      let visible = !!sb && sb.width > 20 && sb.height > 10 && (await submit.isVisible().catch(() => false));
+      if (visible) {
+        const cx = sb.x + sb.width / 2;
+        const cy = sb.y + sb.height / 2;
+        const hit = await page.evaluate(
+          ([x, y, embed]) => {
+            const e = document.elementFromPoint(x, y);
+            if (!e) return false;
+            if (embed === "iframe") return e.tagName === "IFRAME";
+            return !!e.closest("form.jotform-form");
+          },
+          [cx, cy, result.embed]
+        );
+        visible = hit && cy > 0 && cy < MOBILE_VIEWPORT.height;
+      }
+      result.submitVisible = visible;
+      if (!visible) result.problems.push("Submit button is hidden or cut off");
+    }
   }
 
   result.pageOverflowX = await page.evaluate(
@@ -181,26 +238,40 @@ async function main() {
 
   // Simple gallery
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const cards = report.pages
+  // Three columns on desktop so fewer scrolls are needed; one column on narrow screens.
+  // Problem pages first, so they are the first thing in the gallery.
+  const ordered = [...report.pages].sort((a, b) => (a.status === "ok") - (b.status === "ok"));
+  const cards = ordered
     .map(
-      (p) => `<section>
+      (p) => `<section class="${p.status === "ok" ? "ok" : "problem"}">
   <h2>${p.status === "ok" ? "✅" : "⚠️"} ${esc(p.name)}</h2>
-  <p><a href="${esc(p.url)}">${esc(p.url)}</a></p>
-  ${p.problems.length ? `<ul class="bad">${p.problems.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : "<p class=\"good\">Form displayed correctly on mobile.</p>"}
-  <div class="row">
-    ${p.fullFile ? `<figure><img src="${esc(p.fullFile)}"><figcaption>Full page (mobile)</figcaption></figure>` : ""}
-  </div>
+  <p class="url"><a href="${esc(p.url)}">${esc(p.url)}</a></p>
+  ${p.problems.length ? `<ul class="bad">${p.problems.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : '<p class="good">Form displayed correctly on mobile.</p>'}
+  ${p.fullFile ? `<a href="${esc(p.fullFile)}"><img src="${esc(p.fullFile)}" loading="lazy" alt="${esc(p.name)} full page, mobile"></a>` : ""}
 </section>`
     )
     .join("\n");
+  const okCount = report.pages.filter((p) => p.status === "ok").length;
   fs.writeFileSync(
     path.join(OUT_DIR, "index.html"),
-    `<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <title>Jotform mobile check ${today}</title>
-<style>body{font-family:system-ui,sans-serif;margin:24px;max-width:1100px}section{border-top:1px solid #ddd;padding:16px 0}
-.row{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}figure{margin:0}img{max-width:390px;border:1px solid #ccc}
-.bad{color:#b00020}.good{color:#1a7f37}</style></head><body>
-<h1>Jotform mobile check, ${today}</h1>${cards}</body></html>`
+<style>
+body{font-family:system-ui,sans-serif;margin:20px}
+h1{margin:0 0 4px}.summary{margin:0 0 16px;color:#444}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
+section{border:1px solid #ddd;border-radius:8px;padding:12px;background:#fff}
+section.problem{border-color:#b00020}
+h2{font-size:16px;margin:0 0 4px}.url{margin:0 0 6px;font-size:12px;word-break:break-all}
+img{display:block;width:100%;height:auto;border:1px solid #ccc;margin-top:8px}
+.bad{color:#b00020;margin:4px 0 0;padding-left:18px}.good{color:#1a7f37;margin:4px 0 0}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+</style></head><body>
+<h1>Jotform mobile check, ${today}</h1>
+<p class="summary">${okCount} of ${report.pages.length} pages OK. Click a screenshot to open it full size.</p>
+<div class="grid">
+${cards}
+</div></body></html>`
   );
 
   console.log(`\nDone. Output in ${OUT_DIR}`);
