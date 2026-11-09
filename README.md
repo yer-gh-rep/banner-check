@@ -45,7 +45,7 @@ Node, Playwright, or a terminal on their own machine.
 - **To run it early** (e.g. right after a banner change), your colleague
   goes to the repo's **Actions** tab → **Banner Check** → **Run workflow**
   button. No code, no terminal.
-- **Old screenshots** older than 14 days are deleted automatically on every
+- **Old screenshots** older than 7 days are deleted automatically on every
   run — nothing to clean up manually.
 
 ## What gets checked, per page

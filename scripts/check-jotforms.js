@@ -13,6 +13,9 @@ const today = new Date().toISOString().slice(0, 10);
 const OUT_DIR = path.join("jotform-checks", today);
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
+// Pages taller than this (CSS px) use Playwright's fullPage mode instead.
+const MAX_FULL_HEIGHT = 9000;
+
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 /** Scroll through the page so lazy content (incl. the form) gets triggered. */
@@ -28,63 +31,73 @@ async function scrollThroughPage(page) {
   });
 }
 
+const IFRAME_SEL = 'iframe[id^="JotFormIFrame"], iframe[src*="jotform.com"]';
+const INLINE_SEL = "form.jotform-form";
+const FIELDS = "input:visible, textarea:visible, select:visible";
+
+/** The element that holds the form: the Jotform iframe, or the inline form. */
+function formElement(page, embed) {
+  return embed === "inline" ? page.locator(INLINE_SEL).first() : page.locator(IFRAME_SEL).first();
+}
+
 /**
- * Inspect the Jotform: iframe present, form rendered inside it, fields
- * visible, no horizontal overflow, iframe fits within the mobile viewport.
+ * Inspect the Jotform. Most pages embed it as an iframe, but some (older
+ * Singapore reports) print the form straight into the page. Checks: form
+ * present, fields visible, fits the mobile screen, no sideways scroll.
  */
 async function inspectForm(page) {
   const result = {
-    iframeFound: false,
+    embed: null, // "iframe" | "inline"
+    embedFound: false,
     formRendered: false,
     visibleFields: 0,
     fitsViewport: null,
     pageOverflowX: false,
-    iframeBox: null,
+    box: null,
     problems: [],
   };
 
-  const iframeEl = page.locator('iframe[id^="JotFormIFrame"], iframe[src*="jotform.com"]').first();
   try {
-    await iframeEl.waitFor({ state: "attached", timeout: FORM_READY_TIMEOUT_MS });
-    result.iframeFound = true;
+    await page.locator(`${IFRAME_SEL}, ${INLINE_SEL}`).first().waitFor({ state: "attached", timeout: FORM_READY_TIMEOUT_MS });
+    result.embedFound = true;
   } catch {
-    result.problems.push("Jotform iframe never appeared on the page");
+    result.problems.push("Jotform form never appeared on the page");
     return result;
   }
+  result.embed = (await page.locator(IFRAME_SEL).count()) > 0 ? "iframe" : "inline";
 
-  await iframeEl.scrollIntoViewIfNeeded().catch(() => {});
+  const el = formElement(page, result.embed);
+  await el.scrollIntoViewIfNeeded().catch(() => {});
 
   // Give the form extra time to finish rendering after the page loaded.
   await page.waitForTimeout(FORM_EXTRA_WAIT_MS);
 
-  const frame = page.frameLocator('iframe[id^="JotFormIFrame"], iframe[src*="jotform.com"]').first();
+  const fields =
+    result.embed === "iframe"
+      ? page.frameLocator(IFRAME_SEL).first().locator(`form ${FIELDS.split(", ").join(", form ")}`)
+      : page.locator(`${INLINE_SEL} ${FIELDS.split(", ").join(`, ${INLINE_SEL} `)}`);
+
   try {
-    await frame
-      .locator("form input:visible, form textarea:visible, form select:visible")
-      .first()
-      .waitFor({ state: "visible", timeout: FORM_READY_TIMEOUT_MS });
+    await fields.first().waitFor({ state: "visible", timeout: FORM_READY_TIMEOUT_MS });
     result.formRendered = true;
   } catch {
-    result.problems.push("Form fields did not render inside the iframe");
+    result.problems.push("Form fields did not render");
   }
 
   if (result.formRendered) {
-    result.visibleFields = await frame
-      .locator("form input:visible, form textarea:visible, form select:visible")
-      .count()
-      .catch(() => 0);
+    result.visibleFields = await fields.count().catch(() => 0);
     if (result.visibleFields < MIN_VISIBLE_FIELDS) {
       result.problems.push(`Only ${result.visibleFields} visible field(s) in the form`);
     }
   }
 
-  const box = await iframeEl.boundingBox();
-  result.iframeBox = box && {
+  const box = await el.boundingBox();
+  result.box = box && {
     x: Math.round(box.x), y: Math.round(box.y),
     width: Math.round(box.width), height: Math.round(box.height),
   };
   if (!box || box.width < 200 || box.height < 150) {
-    result.problems.push("Iframe is collapsed or too small");
+    result.problems.push("Form is collapsed or too small");
   }
   if (box) {
     result.fitsViewport = box.x >= -1 && box.x + box.width <= MOBILE_VIEWPORT.width + 1;
@@ -119,19 +132,31 @@ async function checkPage(browser, target) {
       out.form = await inspectForm(page);
 
       // Form close-up (viewport screenshot centred on the form)
-      const iframeEl = page.locator('iframe[id^="JotFormIFrame"], iframe[src*="jotform.com"]').first();
-      if (out.form.iframeFound) {
+      if (out.form.embedFound) {
         out.formFile = `${fileBase}-form.png`;
-        await iframeEl.screenshot({ path: path.join(OUT_DIR, out.formFile), timeout: 60000 }).catch(() => {
+        await formElement(page, out.form.embed).screenshot({ path: path.join(OUT_DIR, out.formFile), timeout: 60000 }).catch(() => {
           out.formFile = null;
         });
       }
 
-      // Whole page, mobile. Go back to top first so sticky headers sit normally.
-      await page.evaluate(() => window.scrollTo(0, 0));
-      await page.waitForTimeout(1000);
+      // Whole page, mobile. Playwright's fullPage mode leaves the Jotform
+      // iframe blank (it doesn't repaint while the window is resized for the
+      // capture), so instead grow the real viewport to the page height, let
+      // the iframe repaint, and take a normal screenshot.
       out.fullFile = `${fileBase}-full.png`;
-      await page.screenshot({ path: path.join(OUT_DIR, out.fullFile), fullPage: true, timeout: 90000 });
+      const pageHeight = await page.evaluate(() => Math.ceil(document.documentElement.scrollHeight));
+      if (pageHeight <= MAX_FULL_HEIGHT) {
+        await page.setViewportSize({ width: MOBILE_VIEWPORT.width, height: pageHeight });
+        await page.waitForTimeout(5000); // let the form repaint at the new size
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await page.waitForTimeout(1000);
+        await page.screenshot({ path: path.join(OUT_DIR, out.fullFile), timeout: 90000 });
+      } else {
+        // Unusually tall page: fall back to fullPage (the form close-up still shows the form).
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await page.waitForTimeout(1000);
+        await page.screenshot({ path: path.join(OUT_DIR, out.fullFile), fullPage: true, timeout: 90000 });
+      }
 
       out.ok = true;
     } catch (err) {

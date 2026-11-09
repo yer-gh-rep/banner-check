@@ -37,4 +37,4 @@ export const BANNER_CHECKS = [
 ];
 
 // How many days of screenshot folders to keep in the gallery/repo.
-export const RETENTION_DAYS = 14;
+export const RETENTION_DAYS = 7;
