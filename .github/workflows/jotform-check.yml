@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: "jotform-check"
@@ -48,15 +50,16 @@ jobs:
           git pull --rebase origin ${{ github.ref_name }}
           git push
 
-      # keep_files: true so this does not wipe the banner-checks/ folder
-      # that the other workflow publishes to the same branch.
+      # keep_files: false only clears jotform-checks/ on the gh-pages branch
+      # (destination_dir), not banner-checks/. It also removes stale files
+      # from earlier runs, and old runs are pruned by npm run jotform:prune.
       - name: Deploy jotform-checks/ to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./jotform-checks
           destination_dir: jotform-checks
-          keep_files: true
+          keep_files: false
 
       - name: Notify Google Chat
         if: always()
