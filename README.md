@@ -143,11 +143,15 @@ It then checks that:
 
 - the Jotform iframe exists and is a sensible size,
 - real fields (inputs / dropdowns) are visible inside the iframe,
+- the whole form is visible: it isn't cut off (frame shorter than the form) and
+  the submit button is on screen where a visitor can tap it,
 - the form fits the mobile screen and the page has no sideways scroll.
 
 It saves a full-page mobile screenshot (showing the form in context), publishes a
 small gallery to `.../jotform-checks/<date>/`, and posts a ✅/⚠️ summary to the
 same Google Chat webhook (`GCHAT_WEBHOOK_URL` secret) as the banner check.
+The Chat message lists only the forms with problems (and what is wrong); if
+everything is fine it is a single line saying all forms are displayed correctly.
 
 To add a page, add a line to `JOTFORM_PAGES` in `scripts/jotform-pages.js`.
 The wait times and thresholds are in the same file.
