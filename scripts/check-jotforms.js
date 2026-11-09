@@ -243,8 +243,8 @@ async function main() {
   const ordered = [...report.pages].sort((a, b) => (a.status === "ok") - (b.status === "ok"));
   const cards = ordered
     .map(
-      (p) => `<section class="${p.status === "ok" ? "ok" : "problem"}">
-  <h2>${p.status === "ok" ? "✅" : "⚠️"} ${esc(p.name)}</h2>
+      (p) => `<section id="${slug(p.name)}" class="${p.status === "ok" ? "ok" : "problem"}">
+  <h2>${p.status === "ok" ? "✅" : "⚠️"} ${esc(p.name)} <a class="top" href="#list" title="Back to the list">↑ list</a></h2>
   <p class="url"><a href="${esc(p.url)}">${esc(p.url)}</a></p>
   ${p.problems.length ? `<ul class="bad">${p.problems.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : '<p class="good">Form displayed correctly on mobile.</p>'}
   ${p.fullFile ? `<a href="${esc(p.fullFile)}"><img src="${esc(p.fullFile)}" loading="lazy" alt="${esc(p.name)} full page, mobile"></a>` : ""}
@@ -252,6 +252,12 @@ async function main() {
     )
     .join("\n");
   const okCount = report.pages.filter((p) => p.status === "ok").length;
+  // Quick-jump list: one line per page with its status, linking to its screenshot.
+  const list = ordered
+    .map(
+      (p) => `<li class="${p.status === "ok" ? "ok" : "problem"}"><a href="#${slug(p.name)}">${p.status === "ok" ? "✅" : "⚠️"} ${esc(p.name)}</a>${p.problems.length ? `<span class="why">${esc(p.problems.join("; "))}</span>` : ""}</li>`
+    )
+    .join("\n");
   fs.writeFileSync(
     path.join(OUT_DIR, "index.html"),
     `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
@@ -265,10 +271,21 @@ section.problem{border-color:#b00020}
 h2{font-size:16px;margin:0 0 4px}.url{margin:0 0 6px;font-size:12px;word-break:break-all}
 img{display:block;width:100%;height:auto;border:1px solid #ccc;margin-top:8px}
 .bad{color:#b00020;margin:4px 0 0;padding-left:18px}.good{color:#1a7f37;margin:4px 0 0}
-@media (max-width:900px){.grid{grid-template-columns:1fr}}
+html{scroll-behavior:smooth}
+nav#list{margin:0 0 20px;padding:10px 14px;border:1px solid #ddd;border-radius:8px;background:#fafafa}
+nav#list ul{list-style:none;margin:0;padding:0;columns:3;column-gap:24px}
+nav#list li{break-inside:avoid;padding:3px 0;font-size:14px}
+nav#list li.problem a{color:#b00020;font-weight:600}
+nav#list .why{display:block;font-size:12px;color:#b00020;margin-left:22px}
+section{scroll-margin-top:12px}
+a.top{float:right;font-size:12px;font-weight:400}
+@media (max-width:900px){.grid{grid-template-columns:1fr}nav#list ul{columns:1}}
 </style></head><body>
 <h1>Jotform mobile check, ${today}</h1>
 <p class="summary">${okCount} of ${report.pages.length} pages OK. Click a screenshot to open it full size.</p>
+<nav id="list"><ul>
+${list}
+</ul></nav>
 <div class="grid">
 ${cards}
 </div></body></html>`
